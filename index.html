@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>صوفیان بت | Sofyan.Bet — پلتفرم پیش‌بینی و مینی‌گیم آزمایشی</title>
+  <title>صوفیان بت | Sofyan.Bet — نسخه کامل و خودکار آزمایشی</title>
   <style>
     :root {
-      --bg: #0b0f17;
-      --panel: #131a26;
-      --panel-2: #1a2333;
-      --text: #eef2f7;
-      --muted: #94a3b8;
+      --bg: #070b12;
+      --panel: rgba(15, 22, 34, 0.88);
+      --panel-2: rgba(21, 31, 48, 0.92);
+      --panel-3: rgba(29, 43, 66, 0.95);
+      --text: #f1f5f9;
+      --muted: #cbd5e1;
       --accent: #10b981;
-      --accent-hover: #059669;
+      --accent-dark: #059669;
+      --gold: #f59e0b;
       --danger: #ef4444;
-      --warn: #f59e0b;
-      --border: #253248;
+      --info: #38bdf8;
+      --border: rgba(148, 163, 184, 0.22);
     }
 
     * {
@@ -26,25 +28,33 @@
     }
 
     body {
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(rgba(7, 11, 18, 0.78), rgba(7, 11, 18, 0.88)),
+        url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       min-height: 100vh;
     }
 
     .demo-banner {
-      background: rgba(245, 158, 11, 0.14);
+      background: rgba(245, 158, 11, 0.16);
+      backdrop-filter: blur(6px);
       border-bottom: 1px solid rgba(245, 158, 11, 0.35);
-      color: #fcd34d;
+      color: #fde68a;
       text-align: center;
       padding: 8px 14px;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     header {
-      background: var(--panel);
+      background: rgba(15, 22, 34, 0.9);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
+      padding: 12px 20px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -52,7 +62,7 @@
       gap: 12px;
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
     }
 
     .brand {
@@ -61,219 +71,250 @@
       gap: 10px;
     }
 
-    .brand-logo {
+    .logo {
       background: linear-gradient(135deg, #10b981, #047857);
       color: #fff;
       font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 16px;
     }
 
-    .brand-title h1 {
-      font-size: 18px;
-    }
+    .brand h1 { font-size: 17px; }
+    .brand small { color: var(--muted); font-size: 11px; display: block; }
 
-    .brand-title span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .nav-tabs {
+    .nav {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
-    .tab-btn {
+    .nav-btn {
       background: var(--panel-2);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 8px;
+      padding: 8px 12px;
+      border-radius: 9px;
       cursor: pointer;
-      font-size: 13px;
-      transition: 0.2s;
+      font-size: 12px;
+      transition: 0.15s;
     }
 
-    .tab-btn.active,
-    .tab-btn:hover {
+    .nav-btn.active,
+    .nav-btn:hover {
       background: var(--accent);
-      color: #062118;
+      color: #042117;
       border-color: var(--accent);
       font-weight: bold;
     }
 
-    .wallet-box {
+    .wallet-bar {
       display: flex;
       align-items: center;
       gap: 10px;
       background: var(--panel-2);
       border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 10px;
+      padding: 7px 12px;
+      border-radius: 11px;
     }
 
-    .balance-val {
+    .balance-amount {
       color: #34d399;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 13.5px;
     }
 
     .btn {
       background: var(--accent);
-      color: #052016;
+      color: #042117;
       border: none;
       padding: 8px 14px;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 13px;
-      transition: 0.2s;
+      font-size: 12.5px;
+      transition: 0.15s;
     }
 
-    .btn:hover {
-      background: var(--accent-hover);
+    .btn:hover:not(:disabled) {
+      background: var(--accent-dark);
       color: #fff;
     }
 
-    .btn-secondary {
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-ghost {
       background: var(--panel-2);
       color: var(--text);
       border: 1px solid var(--border);
     }
 
-    .btn-secondary:hover {
-      background: #243147;
-      color: #fff;
+    .btn-ghost:hover:not(:disabled) {
+      background: var(--panel-3);
     }
 
-    .btn-danger {
-      background: var(--danger);
-      color: #fff;
+    .btn-gold {
+      background: var(--gold);
+      color: #1f1400;
     }
 
-    .layout {
-      max-width: 1280px;
-      margin: 20px auto;
-      padding: 0 16px 40px;
+    .main-grid {
+      max-width: 1340px;
+      margin: 18px auto;
+      padding: 0 16px 48px;
       display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 20px;
+      grid-template-columns: 1fr 350px;
+      gap: 18px;
       align-items: start;
     }
 
-    @media (max-width: 960px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 980px) {
+      .main-grid { grid-template-columns: 1fr; }
     }
 
     .card {
       background: var(--panel);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 18px;
+      padding: 16px;
       margin-bottom: 16px;
     }
 
-    .card-header {
+    .card-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 12px;
       margin-bottom: 14px;
-      padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
     }
 
-    .match-row {
+    .controls-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .chip {
       background: var(--panel-2);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .match-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
       color: var(--muted);
-    }
-
-    .live-badge {
-      background: rgba(239, 68, 68, 0.18);
-      color: #fca5a5;
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      padding: 2px 8px;
+      padding: 6px 12px;
       border-radius: 999px;
-      font-size: 11px;
-    }
-
-    .match-teams {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .odds-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .odd-btn {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 9px 8px;
-      border-radius: 8px;
       cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      transition: 0.15s;
+      font-size: 12px;
     }
 
-    .odd-btn:hover {
-      border-color: var(--accent);
-    }
-
-    .odd-btn.selected {
-      background: rgba(16, 185, 129, 0.2);
+    .chip.active {
+      background: rgba(16, 185, 129, 0.22);
       border-color: var(--accent);
       color: #6ee7b7;
       font-weight: bold;
     }
 
-    .slip-item {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-size: 13px;
+    .search-input {
+      flex: 1;
+      min-width: 180px;
+      margin: 0 !important;
     }
 
-    .slip-top {
+    .match-card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      margin-bottom: 10px;
+    }
+
+    .match-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
 
-    .remove-x {
-      background: none;
-      border: none;
-      color: #f87171;
+    .badge-live {
+      background: rgba(239, 68, 68, 0.22);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    .badge-pre {
+      background: rgba(56, 189, 248, 0.18);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    .teams-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 14.5px;
+      margin-bottom: 10px;
+    }
+
+    .score-pill {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: #fde68a;
+    }
+
+    .odds-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .odd-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 9px;
       cursor: pointer;
-      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      transition: 0.12s;
+    }
+
+    .odd-box:hover { border-color: var(--accent); }
+    .odd-box.selected {
+      background: rgba(16, 185, 129, 0.24);
+      border-color: var(--accent);
+      color: #6ee7b7;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
     }
 
     input, select {
@@ -281,460 +322,639 @@
       background: var(--panel-2);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 10px 12px;
+      padding: 9px 11px;
       border-radius: 8px;
-      font-size: 14px;
-      margin-top: 6px;
-      margin-bottom: 12px;
+      font-size: 13px;
+      margin-top: 5px;
+      margin-bottom: 10px;
     }
 
-    .summary-line {
+    .slip-pick {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 9px 10px;
+      margin-bottom: 8px;
+      font-size: 12.5px;
+    }
+
+    .slip-pick-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .del-btn {
+      background: none;
+      border: none;
+      color: #f87171;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .row-kv {
       display: flex;
       justify-content: space-between;
       font-size: 13px;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
       color: var(--muted);
     }
 
-    .summary-line strong {
-      color: var(--text);
-    }
+    .row-kv strong { color: var(--text); }
 
-    .crash-screen {
-      background: #070b12;
+    .stage-box {
+      background: rgba(6, 9, 17, 0.85);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 28px 16px;
+      padding: 20px 14px;
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .multiplier-display {
-      font-size: 42px;
+    .crash-num {
+      font-size: 38px;
       font-weight: bold;
       color: #34d399;
-      margin-bottom: 6px;
     }
 
-    .multiplier-display.crashed {
-      color: var(--danger);
-    }
+    .crash-num.busted { color: var(--danger); }
 
-    .dice-box {
+    .dice-row {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin: 18px 0;
-      font-size: 36px;
+      gap: 14px;
+      margin: 12px 0;
     }
 
-    .die {
+    .dice-tile {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
       background: var(--panel-2);
       border: 1px solid var(--border);
-      width: 68px;
-      height: 68px;
-      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 24px;
       font-weight: bold;
     }
 
-    .status-msg {
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      margin-top: 10px;
-      display: none;
+    .mines-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 12px 0;
     }
 
-    .status-msg.show {
-      display: block;
+    .mine-cell {
+      height: 52px;
+      border-radius: 10px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.12s;
     }
 
-    .status-msg.ok {
-      background: rgba(16, 185, 129, 0.16);
-      border: 1px solid rgba(16, 185, 129, 0.4);
+    .mine-cell:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: var(--panel-3);
+    }
+
+    .mine-cell.safe {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: var(--accent);
       color: #6ee7b7;
     }
 
-    .status-msg.err {
-      background: rgba(239, 68, 68, 0.16);
-      border: 1px solid rgba(239, 68, 68, 0.4);
+    .mine-cell.boom {
+      background: rgba(239, 68, 68, 0.3);
+      border-color: var(--danger);
       color: #fca5a5;
     }
 
-    .history-list {
-      list-style: none;
-      font-size: 13px;
+    .card-face {
+      display: inline-block;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #fde68a;
+      margin: 8px 0;
     }
 
-    .history-list li {
-      padding: 8px 10px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .hidden {
+    .alert-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 9px;
+      font-size: 12.5px;
       display: none;
     }
+
+    .alert-box.show { display: block; }
+    .alert-box.ok {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #6ee7b7;
+    }
+    .alert-box.bad {
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #fca5a5;
+    }
+
+    .log-list {
+      list-style: none;
+      font-size: 12.5px;
+    }
+
+    .log-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <div class="demo-banner">
-    نسخه آزمایشی و نمایشی <strong>صوفیان بت (sofyan.bet)</strong> — موجودی مجازی و درگاه پرداخت کاملاً شبیه‌سازی‌شده است و هیچ تراکنش مالی واقعی انجام نمی‌شود.
+    نسخه کامل و خودکار آزمایشی <strong>صوفیان بت (sofyan.bet)</strong> — تمام بازی‌ها، ضرایب و موجودی‌ها کاملاً شبیه‌سازی‌شده‌اند و هیچ درگاه بانکی یا پرداخت واقعی وجود ندارد.
   </div>
 
   <header>
     <div class="brand">
-      <div class="brand-logo">SB</div>
-      <div class="brand-title">
+      <div class="logo">SB</div>
+      <div>
         <h1>صوفیان بت | Sofyan.Bet</h1>
-        <span>پلتفرم پیش‌بینی ورزشی، بازی‌های شانس و درگاه تستی</span>
+        <small>پیش‌بینی زنده خودکار، کوپن میکس و مجموعه بازی‌های آزمایشی</small>
       </div>
     </div>
 
-    <nav class="nav-tabs">
-      <button class="tab-btn active" data-tab="sports">پیش‌بینی ورزشی</button>
-      <button class="tab-btn" data-tab="games">بازی‌های کازینو</button>
-      <button class="tab-btn" data-tab="wallet">کیف پول و درگاه تستی</button>
-      <button class="tab-btn" data-tab="history">سوابق شرط و تراکنش</button>
+    <nav class="nav">
+      <button class="nav-btn active" data-section="sports">پیش‌بینی ورزشی</button>
+      <button class="nav-btn" data-section="casino">همه بازی‌ها</button>
+      <button class="nav-btn" data-section="wallet">کیف پول تستی</button>
+      <button class="nav-btn" data-section="history">سوابق و تراکنش‌ها</button>
     </nav>
 
-    <div class="wallet-box">
+    <div class="wallet-bar">
       <div>
-        <div style="font-size:11px;color:var(--muted);">موجودی آزمایشی</div>
-        <div class="balance-val" id="headerBalance">۱۰,۰۰۰,۰۰۰ تومان</div>
+        <span style="font-size:11px;color:var(--muted);display:block;">موجودی مجازی</span>
+        <span class="balance-amount" id="balDisplay">۱۰,۰۰۰,۰۰۰ تومان</span>
       </div>
-      <button class="btn" id="quickDepositBtn">شارژ تستی</button>
+      <button class="btn" id="autoTopupBtn">+۲ میلیون تستی</button>
     </div>
   </header>
 
-  <main class="layout">
-    <section id="mainContent">
+  <main class="main-grid">
+    <div>
       <!-- بخش پیش‌بینی ورزشی -->
-      <div id="tab-sports">
+      <section id="sec-sports">
         <div class="card">
-          <div class="card-header">
-            <h2>مسابقات زنده و پیش از بازی</h2>
-            <span style="font-size:12px;color:var(--muted);">روی ضریب دلخواه کلیک کنید تا به کوپن اضافه شود</span>
+          <div class="card-head">
+            <h2>مسابقات ورزشی (به‌روزرسانی خودکار)</h2>
+            <span style="font-size:12px;color:#34d399;">شبیه‌ساز زنده فعال است</span>
           </div>
-          <div id="matchesContainer"></div>
-        </div>
-      </div>
 
-      <!-- بخش بازی‌های کازینو -->
-      <div id="tab-games" class="hidden">
+          <div class="controls-row">
+            <button class="chip active" data-filter="all">همه مسابقات</button>
+            <button class="chip" data-filter="live">فقط زنده</button>
+            <button class="chip" data-filter="pre">پیش از بازی</button>
+            <input type="text" id="searchMatch" class="search-input" placeholder="جستجوی تیم یا لیگ..." />
+          </div>
+
+          <div id="matchesBox"></div>
+        </div>
+      </section>
+
+      <!-- بخش همه بازی‌ها -->
+      <section id="sec-casino" class="hidden">
+        <!-- ۱. بازی انفجار -->
         <div class="card">
-          <div class="card-header">
-            <h2>بازی انفجار شبیه‌سازی‌شده (Sofyan Crash)</h2>
-            <span style="font-size:12px;color:var(--muted);">شروع ضریب از 1.00x و برداشت قبل از سقوط</span>
+          <div class="card-head">
+            <h2>۱. بازی انفجار (Sofyan Crash)</h2>
+            <span style="font-size:12px;color:var(--muted);">برداشت دستی یا برداشت خودکار</span>
           </div>
-          <div class="crash-screen">
-            <div class="multiplier-display" id="crashMultiplier">1.00x</div>
-            <div id="crashStatus" style="font-size:13px;color:var(--muted);">مبلغ را وارد کنید و راند را آغاز نمایید</div>
+          <div class="stage-box">
+            <div class="crash-num" id="crashDisplay">1.00x</div>
+            <div id="crashNote" style="font-size:12.5px;color:var(--muted);margin-top:4px;">
+              مبلغ شرط و ضریب برداشت خودکار را تنظیم کنید
+            </div>
           </div>
-          <label>مبلغ شرط انفجار (تومان)</label>
-          <input type="number" id="crashStake" value="500000" min="10000" step="10000" />
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="btn" id="startCrashBtn">شروع راند انفجار</button>
-            <button class="btn btn-secondary" id="cashoutCrashBtn" disabled>برداشت آنی (Cash Out)</button>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div>
+              <label>مبلغ شرط (تومان)</label>
+              <input type="number" id="crashBetInput" value="500000" min="10000" step="10000" />
+            </div>
+            <div>
+              <label>برداشت خودکار (مثلاً 1.80)</label>
+              <input type="number" id="crashAutoInput" value="1.80" min="1.10" step="0.05" />
+            </div>
           </div>
-          <div id="crashMsg" class="status-msg"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn" id="crashStartBtn">شروع راند انفجار</button>
+            <button class="btn btn-gold" id="crashCashBtn" disabled>برداشت آنی</button>
+          </div>
+          <div class="alert-box" id="crashAlert"></div>
         </div>
 
+        <!-- ۲. بازی مین‌روب -->
         <div class="card">
-          <div class="card-header">
-            <h2>بازی تاس شانس (Lucky Dice)</h2>
-            <span style="font-size:12px;color:var(--muted);">مجموع ۲ تاس بالای ۷ = برد با ضریب 1.90x</span>
+          <div class="card-head">
+            <h2>۲. بازی مین‌روب (Mines)</h2>
+            <span style="font-size:12px;color:#34d399;" id="minesMultText">ضریب فعلی: 1.00x</span>
           </div>
-          <div class="dice-box">
-            <div class="die" id="die1">🎲</div>
-            <div class="die" id="die2">🎲</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div>
+              <label>مبلغ شرط مین‌روب (تومان)</label>
+              <input type="number" id="minesBetInput" value="300000" min="10000" step="10000" />
+            </div>
+            <div>
+              <label>تعداد مین‌ها (از ۲۵ خانه)</label>
+              <select id="minesCountSelect">
+                <option value="3">۳ مین</option>
+                <option value="5" selected>۵ مین</option>
+                <option value="8">۸ مین</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn" id="minesStartBtn">شروع بازی مین‌روب</button>
+            <button class="btn btn-gold" id="minesCashBtn" disabled>برداشت سود مین‌روب</button>
+          </div>
+          <div class="mines-grid" id="minesBoard"></div>
+          <div class="alert-box" id="minesAlert"></div>
+        </div>
+
+        <!-- ۳. بازی های/لو -->
+        <div class="card">
+          <div class="card-head">
+            <h2>۳. بازی های/لو (Hi-Lo کارت)</h2>
+            <span style="font-size:12px;color:#34d399;" id="hiloMultText">ضریب فعلی: 1.00x</span>
+          </div>
+          <div class="stage-box">
+            <div style="font-size:12px;color:var(--muted);">کارت فعلی (۱ تا ۱۳)</div>
+            <div class="card-face" id="hiloCardVal">۷</div>
+            <div id="hiloInfo" style="font-size:12.5px;color:var(--muted);">
+              حدس بزنید کارت بعدی بالاتر (≥) یا پایین‌تر (≤) است
+            </div>
+          </div>
+          <label>مبلغ شرط های/لو (تومان)</label>
+          <input type="number" id="hiloBetInput" value="250000" min="10000" step="10000" />
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn" id="hiloStartBtn">شروع دست جدید</button>
+            <button class="btn btn-ghost" id="hiloHighBtn" disabled>بالاتر یا مساوی (≥)</button>
+            <button class="btn btn-ghost" id="hiloLowBtn" disabled>پایین‌تر یا مساوی (≤)</button>
+            <button class="btn btn-gold" id="hiloCashBtn" disabled>برداشت سود</button>
+          </div>
+          <div class="alert-box" id="hiloAlert"></div>
+        </div>
+
+        <!-- ۴. بازی تاس شانس -->
+        <div class="card">
+          <div class="card-head">
+            <h2>۴. بازی تاس شانس</h2>
+            <span style="font-size:12px;color:var(--muted);">جمع ۲ تاس بالای ۷ = برد با ضریب 1.90x</span>
+          </div>
+          <div class="dice-row">
+            <div class="dice-tile" id="diceA">🎲</div>
+            <div class="dice-tile" id="diceB">🎲</div>
           </div>
           <label>مبلغ شرط تاس (تومان)</label>
-          <input type="number" id="diceStake" value="250000" min="10000" step="10000" />
-          <button class="btn" id="rollDiceBtn">پرتاب تاس‌ها</button>
-          <div id="diceMsg" class="status-msg"></div>
+          <input type="number" id="diceBetInput" value="250000" min="10000" step="10000" />
+          <button class="btn" id="diceRollBtn">پرتاب خودکار تاس‌ها</button>
+          <div class="alert-box" id="diceAlert"></div>
         </div>
-      </div>
 
-      <!-- بخش کیف پول و درگاه پرداخت آزمایشی -->
-      <div id="tab-wallet" class="hidden">
+        <!-- ۵. چرخ شانس -->
         <div class="card">
-          <div class="card-header">
-            <h2>درگاه پرداخت کاملاً آزمایشی (Sandbox Gateway)</h2>
-            <span style="font-size:12px;color:#fcd34d;">بدون اتصال به شبکه بانکی واقعی</span>
+          <div class="card-head">
+            <h2>۵. چرخ شانس ضرایب</h2>
+            <span style="font-size:12px;color:var(--muted);">ضرایب 0x، 1.2x، 1.5x، 2.0x و 3.0x</span>
           </div>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">
-            این فرم صرفاً جهت شبیه‌سازی جریان شارژ حساب تستی طراحی شده است. هیچ اطلاعات واقعی وارد نکنید.
-          </p>
-          <label>مبلغ شارژ آزمایشی (تومان)</label>
-          <input type="number" id="depositAmount" value="2000000" min="50000" step="50000" />
-
-          <label>شماره کارت نمایشی (اختیاری / تستی)</label>
-          <input type="text" id="fakeCard" placeholder="6037-XXXX-XXXX-0000" value="6037-9911-2233-0000" />
-
-          <label>نوع درگاه شبیه‌سازی‌شده</label>
-          <select id="gatewayType">
-            <option value="درگاه شبیه‌سازی‌پذیر شماره ۱ (تستی)">درگاه شبیه‌سازی‌پذیر شماره ۱ (تستی)</option>
-            <option value="کیف پول آزمایشی صوفیان">کیف پول آزمایشی صوفیان</option>
-          </select>
-
-          <button class="btn" id="submitDepositBtn">تایید و شارژ موجودی آزمایشی</button>
-          <div id="walletMsg" class="status-msg"></div>
+          <div class="stage-box">
+            <div id="wheelBox" style="font-size:20px;font-weight:bold;color:#fde68a;">آماده چرخش</div>
+          </div>
+          <label>مبلغ شرط چرخ شانس (تومان)</label>
+          <input type="number" id="wheelBetInput" value="300000" min="10000" step="10000" />
+          <button class="btn" id="wheelSpinBtn">چرخش چرخ شانس</button>
+          <div class="alert-box" id="wheelAlert"></div>
         </div>
-      </div>
+      </section>
+
+      <!-- بخش کیف پول آزمایشی -->
+      <section id="sec-wallet" class="hidden">
+        <div class="card">
+          <div class="card-head">
+            <h2>کیف پول آزمایشی (بدون درگاه بانکی)</h2>
+            <span style="font-size:12px;color:#fde68a;">شبیه‌ساز داخلی مرورگر</span>
+          </div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">
+            این بخش هیچ درگاه بانکی یا ارتباط مالی واقعی ندارد و فقط موجودی شبیه‌سازی‌شده را در مرورگر شما شارژ یا ریست می‌کند.
+          </p>
+          <label>مبلغ شارژ تستی (تومان)</label>
+          <input type="number" id="customTopupInput" value="5000000" min="50000" step="50000" />
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn" id="customTopupBtn">اعمال شارژ تستی</button>
+            <button class="btn btn-ghost" id="resetDemoBtn">ریست به ۱۰,۰۰۰,۰۰۰ تومان</button>
+          </div>
+          <div class="alert-box" id="walletAlert"></div>
+        </div>
+      </section>
 
       <!-- بخش سوابق -->
-      <div id="tab-history" class="hidden">
+      <section id="sec-history" class="hidden">
         <div class="card">
-          <div class="card-header">
+          <div class="card-head">
             <h2>سوابق شرط‌ها و تراکنش‌های آزمایشی</h2>
-            <button class="btn btn-secondary" id="clearHistoryBtn">پاکسازی سوابق</button>
+            <button class="btn btn-ghost" id="clearLogsBtn">پاکسازی سوابق</button>
           </div>
-          <ul class="history-list" id="historyList">
-            <li><span>هنوز هیچ شرط یا تراکنشی ثبت نشده است.</span></li>
-          </ul>
+          <ul class="log-list" id="logsContainer"></ul>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- کوپن شرط‌بندی سمت چپ -->
     <aside class="card">
-      <div class="card-header">
+      <div class="card-head">
         <h2>کوپن شرط‌بندی</h2>
-        <span id="slipCount" style="font-size:12px;color:#34d399;">۰ انتخاب</span>
+        <span style="font-size:12px;color:#34d399;" id="slipBadge">۰ انتخاب</span>
       </div>
 
-      <div id="slipItemsContainer">
-        <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">
-          هنوز انتخابی در کوپن وجود ندارد. یک ضریب از مسابقات انتخاب کنید.
-        </p>
-      </div>
+      <div id="slipList"></div>
 
       <label>مبلغ شرط (تومان)</label>
-      <input type="number" id="betStake" value="500000" min="10000" step="10000" />
+      <input type="number" id="slipStakeInput" value="500000" min="10000" step="10000" />
 
-      <div class="summary-line">
-        <span>ضریب کل کوپن:</span>
-        <strong id="totalOdds">0.00</strong>
+      <div class="row-kv">
+        <span>نوع کوپن:</span>
+        <strong id="slipTypeText">خالی</strong>
       </div>
-      <div class="summary-line">
+      <div class="row-kv">
+        <span>ضریب کل:</span>
+        <strong id="slipOddsText">0.00</strong>
+      </div>
+      <div class="row-kv">
+        <span>بونوس میکس خودکار:</span>
+        <strong id="slipBonusText" style="color:#fde68a;">۰٪</strong>
+      </div>
+      <div class="row-kv">
         <span>برد احتمالی:</span>
-        <strong id="potentialWin" style="color:#34d399;">۰ تومان</strong>
+        <strong id="slipWinText" style="color:#34d399;">۰ تومان</strong>
       </div>
 
-      <button class="btn" style="width:100%;" id="placeBetBtn">ثبت شرط آزمایشی</button>
-      <div id="slipMsg" class="status-msg"></div>
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <button class="btn" style="flex:1;" id="placeSlipBtn">ثبت شرط خودکار</button>
+        <button class="btn btn-ghost" id="clearSlipBtn">خالی کردن</button>
+      </div>
+      <div class="alert-box" id="slipAlert"></div>
     </aside>
   </main>
 
   <script>
-    const state = {
-      balance: 10000000,
-      slip: [],
-      history: [],
-      crashInterval: null,
-      crashCurrent: 1.0,
-      crashBustAt: 1.0,
-      crashActive: false,
-      crashStake: 0
-    };
+    const STORAGE_KEY = "sofyan_bet_photo_demo_v4";
 
-    const matches = [
-      {
-        id: "m1",
-        league: "لیگ برتر فوتبال",
-        time: "زنده • دقیقه ۶۴",
-        live: true,
-        home: "پرسپولیس",
-        away: "استقلال",
-        odds: { home: 2.15, draw: 3.10, away: 3.45 }
-      },
-      {
-        id: "m2",
-        league: "لیگ قهرمانان اروپا",
-        time: "امشب ۲۳:۳۰",
-        live: false,
-        home: "رئال مادرید",
-        away: "بایرن مونیخ",
-        odds: { home: 2.30, draw: 3.40, away: 2.95 }
-      },
-      {
-        id: "m3",
-        league: "لیگ برتر انگلیس",
-        time: "فردا ۱۹:۰۰",
-        live: false,
-        home: "آرسنال",
-        away: "منچستر سیتی",
-        odds: { home: 2.65, draw: 3.25, away: 2.60 }
-      }
+    const defaultMatches = [
+      { id: "m1", league: "لیگ برتر فوتبال", live: true, clock: "دقیقه ۶۸", score: "۱ - ۱", home: "پرسپولیس", away: "استقلال", odds: { h: 2.10, d: 3.15, a: 3.50 } },
+      { id: "m2", league: "لیگ قهرمانان اروپا", live: true, clock: "دقیقه ۳۴", score: "۰ - ۱", home: "رئال مادرید", away: "بایرن مونیخ", odds: { h: 2.45, d: 3.30, a: 2.75 } },
+      { id: "m3", league: "لیگ برتر انگلیس", live: false, clock: "امشب ۲۳:۳۰", score: "—", home: "آرسنال", away: "منچستر سیتی", odds: { h: 2.60, d: 3.20, a: 2.65 } },
+      { id: "m4", league: "لالیگا اسپانیا", live: false, clock: "فردا ۱۹:۰۰", score: "—", home: "بارسلونا", away: "اتلتیکو مادرید", odds: { h: 1.95, d: 3.45, a: 3.80 } }
     ];
 
-    function formatToman(num) {
+    let state = loadState();
+    let matchFilter = "all";
+    let searchTerm = "";
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            balance: typeof parsed.balance === "number" ? parsed.balance : 10000000,
+            slip: Array.isArray(parsed.slip) ? parsed.slip : [],
+            logs: Array.isArray(parsed.logs) ? parsed.logs : [],
+            matches: Array.isArray(parsed.matches) && parsed.matches.length ? parsed.matches : structuredClone(defaultMatches)
+          };
+        }
+      } catch (e) {}
+      return {
+        balance: 10000000,
+        slip: [],
+        logs: [],
+        matches: structuredClone(defaultMatches)
+      };
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          balance: state.balance,
+          slip: state.slip,
+          logs: state.logs.slice(0, 50),
+          matches: state.matches
+        }));
+      } catch (e) {}
+    }
+
+    function fmt(num) {
       return Math.round(num).toLocaleString("fa-IR") + " تومان";
     }
 
-    function showMessage(el, text, isOk = true) {
+    function notify(el, text, ok = true) {
       el.textContent = text;
-      el.className = "status-msg show " + (isOk ? "ok" : "err");
+      el.className = "alert-box show " + (ok ? "ok" : "bad");
     }
 
-    function addHistory(title, amountText) {
-      const timeStr = new Date().toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit" });
-      state.history.unshift({ title, amountText, timeStr });
-      renderHistory();
+    function addLog(title, delta) {
+      const time = new Date().toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit" });
+      const sign = delta >= 0 ? "+" : "";
+      state.logs.unshift({ title, amount: `${sign}${fmt(delta)}`, time, positive: delta >= 0 });
+      saveState();
+      renderLogs();
     }
 
-    function updateBalance(delta, logTitle = null) {
-      state.balance += delta;
-      document.getElementById("headerBalance").textContent = formatToman(state.balance);
-      if (logTitle) {
-        const sign = delta >= 0 ? "+" : "";
-        addHistory(logTitle, `${sign}${formatToman(delta)}`);
-      }
+    function adjustBalance(delta, logTitle = null) {
+      state.balance = Math.max(0, state.balance + delta);
+      document.getElementById("balDisplay").textContent = fmt(state.balance);
+      if (logTitle) addLog(logTitle, delta);
+      else saveState();
     }
 
     function renderMatches() {
-      const container = document.getElementById("matchesContainer");
-      container.innerHTML = matches
-        .map((m) => {
-          const isSelected = (market) =>
-            state.slip.some((item) => item.matchId === m.id && item.market === market)
-              ? "selected"
-              : "";
-          return `
-            <div class="match-row">
-              <div class="match-meta">
-                <span>${m.league} • ${m.time}</span>
-                ${m.live ? '<span class="live-badge">زنده</span>' : "<span>پیش از بازی</span>"}
-              </div>
-              <div class="match-teams">
-                <span>${m.home}</span>
-                <span style="color:var(--muted);font-size:12px;">VS</span>
-                <span>${m.away}</span>
-              </div>
-              <div class="odds-grid">
-                <button class="odd-btn ${isSelected("home")}" onclick="toggleBet('${m.id}', 'home', 'برد ${m.home}', ${m.odds.home})">
-                  <span>1 (${m.home})</span>
-                  <strong>${m.odds.home.toFixed(2)}</strong>
-                </button>
-                <button class="odd-btn ${isSelected("draw")}" onclick="toggleBet('${m.id}', 'draw', 'مساوی', ${m.odds.draw})">
-                  <span>X (مساوی)</span>
-                  <strong>${m.odds.draw.toFixed(2)}</strong>
-                </button>
-                <button class="odd-btn ${isSelected("away")}" onclick="toggleBet('${m.id}', 'away', 'برد ${m.away}', ${m.odds.away})">
-                  <span>2 (${m.away})</span>
-                  <strong>${m.odds.away.toFixed(2)}</strong>
-                </button>
-              </div>
-            </div>
-          `;
-        })
-        .join("");
-    }
-
-    window.toggleBet = function (matchId, market, label, odd) {
-      const match = matches.find((item) => item.id === matchId);
-      const existingIndex = state.slip.findIndex((item) => item.matchId === matchId);
-
-      if (existingIndex > -1 && state.slip[existingIndex].market === market) {
-        state.slip.splice(existingIndex, 1);
-      } else {
-        const entry = {
-          matchId,
-          matchTitle: `${match.home} vs ${match.away}`,
-          market,
-          label,
-          odd
-        };
-        if (existingIndex > -1) {
-          state.slip[existingIndex] = entry;
-        } else {
-          state.slip.push(entry);
+      const box = document.getElementById("matchesBox");
+      const filtered = state.matches.filter((m) => {
+        if (matchFilter === "live" && !m.live) return false;
+        if (matchFilter === "pre" && m.live) return false;
+        if (searchTerm.trim()) {
+          const q = searchTerm.trim().toLowerCase();
+          const hay = `${m.league} ${m.home} ${m.away}`.toLowerCase();
+          if (!hay.includes(q)) return false;
         }
-      }
+        return true;
+      });
 
-      renderMatches();
-      renderSlip();
-    };
-
-    function renderSlip() {
-      const container = document.getElementById("slipItemsContainer");
-      const countEl = document.getElementById("slipCount");
-      const oddsEl = document.getElementById("totalOdds");
-      const winEl = document.getElementById("potentialWin");
-      const stake = Math.max(0, Number(document.getElementById("betStake").value) || 0);
-
-      countEl.textContent = `${state.slip.length.toLocaleString("fa-IR")} انتخاب`;
-
-      if (state.slip.length === 0) {
-        container.innerHTML = `<p style="font-size:13px;color:var(--muted);margin-bottom:12px;">هنوز انتخابی در کوپن وجود ندارد. یک ضریب از مسابقات انتخاب کنید.</p>`;
-        oddsEl.textContent = "0.00";
-        winEl.textContent = "۰ تومان";
+      if (!filtered.length) {
+        box.innerHTML = `<p style="font-size:13px;color:var(--muted);">مسابقه‌ای با این فیلتر یافت نشد.</p>`;
         return;
       }
 
-      container.innerHTML = state.slip
-        .map(
-          (item, idx) => `
-          <div class="slip-item">
-            <div class="slip-top">
-              <strong>${item.matchTitle}</strong>
-              <button class="remove-x" onclick="removeSlipItem(${idx})">✕</button>
+      box.innerHTML = filtered.map((m) => {
+        const sel = (k) => state.slip.some((s) => s.matchId === m.id && s.key === k) ? "selected" : "";
+        return `
+          <div class="match-card">
+            <div class="match-top">
+              <span>${m.league} • ${m.clock}</span>
+              <span class="${m.live ? "badge-live" : "badge-pre"}">${m.live ? "زنده" : "پیش از بازی"}</span>
             </div>
-            <div style="display:flex;justify-content:space-between;color:var(--muted);">
-              <span>${item.label}</span>
-              <span style="color:#34d399;font-weight:bold;">${item.odd.toFixed(2)}</span>
+            <div class="teams-line">
+              <span>${m.home}</span>
+              <span class="score-pill">${m.score}</span>
+              <span>${m.away}</span>
+            </div>
+            <div class="odds-3">
+              <button class="odd-box ${sel("h")}" onclick="togglePick('${m.id}','h','برد ${m.home}',${m.odds.h})">
+                <span>1</span><strong>${m.odds.h.toFixed(2)}</strong>
+              </button>
+              <button class="odd-box ${sel("d")}" onclick="togglePick('${m.id}','d','مساوی',${m.odds.d})">
+                <span>X</span><strong>${m.odds.d.toFixed(2)}</strong>
+              </button>
+              <button class="odd-box ${sel("a")}" onclick="togglePick('${m.id}','a','برد ${m.away}',${m.odds.a})">
+                <span>2</span><strong>${m.odds.a.toFixed(2)}</strong>
+              </button>
             </div>
           </div>
-        `
-        )
-        .join("");
-
-      const totalOdd = state.slip.reduce((acc, item) => acc * item.odd, 1);
-      oddsEl.textContent = totalOdd.toFixed(2);
-      winEl.textContent = formatToman(stake * totalOdd);
+        `;
+      }).join("");
     }
 
-    window.removeSlipItem = function (index) {
-      state.slip.splice(index, 1);
+    setInterval(() => {
+      state.matches.forEach((m) => {
+        if (m.live) {
+          const delta = (Math.random() - 0.5) * 0.08;
+          m.odds.h = Number(Math.max(1.25, m.odds.h + delta).toFixed(2));
+          m.odds.d = Number(Math.max(1.80, m.odds.d - delta * 0.5).toFixed(2));
+          m.odds.a = Number(Math.max(1.25, m.odds.a - delta * 0.6).toFixed(2));
+          if (Math.random() < 0.08) {
+            const parts = m.score.split("-").map((x) => parseInt(x.trim(), 10) || 0);
+            if (Math.random() < 0.5) parts[0] += 1; else parts[1] += 1;
+            m.score = `${parts[0]} - ${parts[1]}`;
+          }
+        }
+      });
+      state.slip.forEach((item) => {
+        const found = state.matches.find((x) => x.id === item.matchId);
+        if (found) item.odd = found.odds[item.key];
+      });
       renderMatches();
       renderSlip();
+      saveState();
+    }, 4500);
+
+    window.togglePick = function (matchId, key, label, odd) {
+      const m = state.matches.find((x) => x.id === matchId);
+      const idx = state.slip.findIndex((x) => x.matchId === matchId);
+      if (idx > -1 && state.slip[idx].key === key) {
+        state.slip.splice(idx, 1);
+      } else {
+        const entry = { matchId, matchName: `${m.home} vs ${m.away}`, key, label, odd };
+        if (idx > -1) state.slip[idx] = entry;
+        else state.slip.push(entry);
+      }
+      renderMatches();
+      renderSlip();
+      saveState();
     };
 
-    document.getElementById("betStake").addEventListener("input", renderSlip);
+    function calcBonusPercent(count) {
+      if (count >= 4) return 15;
+      if (count === 3) return 10;
+      if (count === 2) return 5;
+      return 0;
+    }
 
-    document.getElementById("placeBetBtn").addEventListener("click", () => {
-      const msgEl = document.getElementById("slipMsg");
-      const stake = Number(document.getElementById("betStake").value) || 0;
+    function renderSlip() {
+      const list = document.getElementById("slipList");
+      const stake = Math.max(0, Number(document.getElementById("slipStakeInput").value) || 0);
+      const count = state.slip.length;
+      document.getElementById("slipBadge").textContent = `${count.toLocaleString("fa-IR")} انتخاب`;
 
-      if (state.slip.length === 0) {
-        showMessage(msgEl, "ابتدا حداقل یک ضریب را به کوپن اضافه کنید.", false);
+      if (!count) {
+        list.innerHTML = `<p style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">هنوز انتخابی ثبت نشده است.</p>`;
+        document.getElementById("slipTypeText").textContent = "خالی";
+        document.getElementById("slipOddsText").textContent = "0.00";
+        document.getElementById("slipBonusText").textContent = "۰٪";
+        document.getElementById("slipWinText").textContent = "۰ تومان";
         return;
       }
-      if (stake < 10000) {
-        showMessage(msgEl, "حداقل مبلغ شرط ۱۰,۰۰۰ تومان است.", false);
-        return;
-      }
-      if (stake > state.balance) {
-        showMessage(msgEl, "موجودی آزمایشی کافی نیست. حساب خود را شارژ کنید.", false);
-        return;
-      }
 
-      const totalOdd = state.slip.reduce((acc, item) => acc * item.odd, 1);
-      const won = Math.random() < 0.45;
-      updateBalance(-stake, `ثبت کوپن (${state.slip.length} انتخاب، ضریب ${totalOdd.toFixed(2)})`);
+      list.innerHTML = state.slip.map((s, i) => `
+        <div class="slip-pick">
+          <div class="slip-pick-head">
+            <span>${s.matchName}</span>
+            <button class="del-btn" onclick="removePick(${i})">✕</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;color:var(--muted);margin-top:3px;">
+            <span>${s.label}</span>
+            <strong style="color:#34d399;">${s.odd.toFixed(2)}</strong>
+          </div>
+        </div>
+      `).join("");
 
+      const totalOdd = state.slip.reduce((acc, s) => acc * s.odd, 1);
+      const bonusPct = calcBonusPercent(count);
+      const grossWin = stake * totalOdd * (1 + bonusPct / 100);
+
+      document.getElementById("slipTypeText").textContent = count === 1 ? "تکی" : `میکس (${count}تایی)`;
+      document.getElementById("slipOddsText").textContent = totalOdd.toFixed(2);
+      document.getElementById("slipBonusText").textContent = `${bonusPct.toLocaleString("fa-IR")}٪`;
+      document.getElementById("slipWinText").textContent = fmt(grossWin);
+    }
+
+    window.removePick = function (i) {
+      state.slip.splice(i, 1);
+      renderMatches();
+      renderSlip();
+      saveState();
+    };
+
+    document.getElementById("clearSlipBtn").addEventListener("click", () => {
+      state.slip = [];
+      renderMatches();
+      renderSlip();
+      saveState();
+    });
+
+    document.getElementById("slipStakeInput").addEventListener("input", renderSlip);
+
+    document.getElementById("placeSlipBtn").addEventListener("click", () => {
+      const alertEl = document.getElementById("slipAlert");
+      const stake = Number(document.getElementById("slipStakeInput").value) || 0;
+      if (!state.slip.length) return notify(alertEl, "ابتدا یک یا چند ضریب انتخاب کنید.", false);
+      if (stake < 10000) return notify(alertEl, "حداقل مبلغ شرط ۱۰,۰۰۰ تومان است.", false);
+      if (stake > state.balance) return notify(alertEl, "موجودی تستی کافی نیست؛ از شارژ تستی استفاده کنید.", false);
+
+      const totalOdd = state.slip.reduce((acc, s) => acc * s.odd, 1);
+      const bonusPct = calcBonusPercent(state.slip.length);
+      const payout = stake * totalOdd * (1 + bonusPct / 100);
+      const winProb = Math.max(0.18, 0.52 - (state.slip.length - 1) * 0.08);
+      const won = Math.random() < winProb;
+
+      adjustBalance(-stake, `شرط ${state.slip.length > 1 ? "میکس" : "تکی"} (${totalOdd.toFixed(2)}x)`);
       if (won) {
-        const payout = stake * totalOdd;
-        updateBalance(payout, `برد کوپن آزمایشی (ضریب ${totalOdd.toFixed(2)})`);
-        showMessage(msgEl, `تبریک! کوپن شما برنده شد و ${formatToman(payout)} به موجودی اضافه گردید.`, true);
+        adjustBalance(payout, `برد شرط ورزشی (${totalOdd.toFixed(2)}x)`);
+        notify(alertEl, `شرط شما در شبیه‌سازی برنده شد و ${fmt(payout)} به موجودی اضافه شد.`, true);
       } else {
-        showMessage(msgEl, `شرط آزمایشی ثبت شد؛ این کوپن در شبیه‌سازی بازنده شد (${formatToman(stake)}).`, false);
+        notify(alertEl, `شرط ثبت شد؛ این راند در شبیه‌سازی بازنده شد (${fmt(stake)}).`, false);
       }
 
       state.slip = [];
@@ -742,149 +962,331 @@
       renderSlip();
     });
 
-    // بازی انفجار
-    document.getElementById("startCrashBtn").addEventListener("click", () => {
-      const msgEl = document.getElementById("crashMsg");
-      const stake = Number(document.getElementById("crashStake").value) || 0;
+    // ۱. انفجار
+    let cTimer = null, cCur = 1.0, cBust = 1.0, cActive = false, cStake = 0, cAuto = 1.8;
+    function finishCrashWin(mult) {
+      clearInterval(cTimer);
+      cActive = false;
+      const win = cStake * mult;
+      adjustBalance(win, `برداشت انفجار (${mult.toFixed(2)}x)`);
+      document.getElementById("crashStartBtn").disabled = false;
+      document.getElementById("crashCashBtn").disabled = true;
+      document.getElementById("crashNote").textContent = `برداشت انجام شد در ضریب ${mult.toFixed(2)}x`;
+      notify(document.getElementById("crashAlert"), `برداشت موفق! مبلغ ${fmt(win)} به موجودی تستی واریز شد.`, true);
+    }
 
-      if (state.crashActive) return;
-      if (stake < 10000 || stake > state.balance) {
-        showMessage(msgEl, "مبلغ نامعتبر است یا موجودی کافی نیست.", false);
-        return;
-      }
+    document.getElementById("crashStartBtn").addEventListener("click", () => {
+      const alertEl = document.getElementById("crashAlert");
+      const stake = Number(document.getElementById("crashBetInput").value) || 0;
+      const autoVal = Math.max(1.05, Number(document.getElementById("crashAutoInput").value) || 1.8);
+      if (cActive) return;
+      if (stake < 10000 || stake > state.balance) return notify(alertEl, "مبلغ نامعتبر یا موجودی تستی ناکافی است.", false);
 
-      updateBalance(-stake, "ورود به راند انفجار آزمایشی");
-      state.crashStake = stake;
-      state.crashCurrent = 1.0;
-      state.crashBustAt = Number((1.15 + Math.random() * 2.8).toFixed(2));
-      state.crashActive = true;
+      adjustBalance(-stake, "ورود به راند انفجار تستی");
+      cStake = stake;
+      cAuto = autoVal;
+      cCur = 1.0;
+      cBust = Number((1.10 + Math.random() * 3.1).toFixed(2));
+      cActive = true;
 
-      const multEl = document.getElementById("crashMultiplier");
-      multEl.classList.remove("crashed");
-      document.getElementById("startCrashBtn").disabled = true;
-      document.getElementById("cashoutCrashBtn").disabled = false;
-      document.getElementById("crashStatus").textContent = "ضریب در حال افزایش است... پیش از سقوط برداشت کنید!";
-      msgEl.className = "status-msg";
+      const disp = document.getElementById("crashDisplay");
+      disp.classList.remove("busted");
+      document.getElementById("crashStartBtn").disabled = true;
+      document.getElementById("crashCashBtn").disabled = false;
+      document.getElementById("crashNote").textContent = `در حال افزایش... (برداشت خودکار روی ${cAuto.toFixed(2)}x)`;
+      alertEl.className = "alert-box";
 
-      state.crashInterval = setInterval(() => {
-        state.crashCurrent = Number((state.crashCurrent + 0.05).toFixed(2));
-        multEl.textContent = state.crashCurrent.toFixed(2) + "x";
+      cTimer = setInterval(() => {
+        cCur = Number((cCur + 0.05).toFixed(2));
+        disp.textContent = cCur.toFixed(2) + "x";
 
-        if (state.crashCurrent >= state.crashBustAt) {
-          clearInterval(state.crashInterval);
-          state.crashActive = false;
-          multEl.classList.add("crashed");
-          document.getElementById("startCrashBtn").disabled = false;
-          document.getElementById("cashoutCrashBtn").disabled = true;
-          document.getElementById("crashStatus").textContent = `انفجار در ضریب ${state.crashBustAt.toFixed(2)}x رخ داد!`;
-          showMessage(msgEl, "راند سقوط کرد و مبلغ این راند از دست رفت.", false);
+        if (cCur >= cAuto && cCur < cBust) {
+          finishCrashWin(cCur);
+          return;
         }
-      }, 140);
+
+        if (cCur >= cBust) {
+          clearInterval(cTimer);
+          cActive = false;
+          disp.classList.add("busted");
+          document.getElementById("crashStartBtn").disabled = false;
+          document.getElementById("crashCashBtn").disabled = true;
+          document.getElementById("crashNote").textContent = `انفجار در ضریب ${cBust.toFixed(2)}x رخ داد`;
+          notify(alertEl, "راند سقوط کرد و شرط این راند از دست رفت.", false);
+        }
+      }, 130);
     });
 
-    document.getElementById("cashoutCrashBtn").addEventListener("click", () => {
-      if (!state.crashActive) return;
-      clearInterval(state.crashInterval);
-      state.crashActive = false;
-
-      const payout = state.crashStake * state.crashCurrent;
-      updateBalance(payout, `برداشت انفجار در ضریب ${state.crashCurrent.toFixed(2)}x`);
-      document.getElementById("startCrashBtn").disabled = false;
-      document.getElementById("cashoutCrashBtn").disabled = true;
-      document.getElementById("crashStatus").textContent = `برداشت موفق در ضریب ${state.crashCurrent.toFixed(2)}x`;
-      showMessage(
-        document.getElementById("crashMsg"),
-        `برداشت شما انجام شد و ${formatToman(payout)} به موجودی تستی واریز گردید.`,
-        true
-      );
+    document.getElementById("crashCashBtn").addEventListener("click", () => {
+      if (cActive) finishCrashWin(cCur);
     });
 
-    // بازی تاس شانس
-    document.getElementById("rollDiceBtn").addEventListener("click", () => {
-      const msgEl = document.getElementById("diceMsg");
-      const stake = Number(document.getElementById("diceStake").value) || 0;
+    // ۲. مین‌روب
+    let mActive = false, mStake = 0, mMines = new Set(), mRevealed = 0, mMult = 1.0;
+    function calcMineMult(minesCount, revealedCount) {
+      const safeTotal = 25 - minesCount;
+      const factor = 1 + (minesCount * 0.14 * revealedCount) / Math.max(1, safeTotal);
+      return Number(factor.toFixed(2));
+    }
 
-      if (stake < 10000 || stake > state.balance) {
-        showMessage(msgEl, "مبلغ شرط نامعتبر است یا موجودی کافی نیست.", false);
-        return;
+    function renderMinesBoard(revealAll = false) {
+      const board = document.getElementById("minesBoard");
+      board.innerHTML = "";
+      for (let i = 0; i < 25; i++) {
+        const btn = document.createElement("button");
+        btn.className = "mine-cell";
+        const isMine = mMines.has(i);
+        if (revealAll && isMine) {
+          btn.textContent = "💣";
+          btn.classList.add("boom");
+          btn.disabled = true;
+        } else if (!mActive && !revealAll) {
+          btn.textContent = "•";
+          btn.disabled = true;
+        } else {
+          btn.textContent = "•";
+          btn.disabled = !mActive;
+        }
+        btn.addEventListener("click", () => clickMineCell(i, btn));
+        board.appendChild(btn);
       }
+    }
 
-      updateBalance(-stake, "شرط بازی تاس شانس");
+    function clickMineCell(idx, btn) {
+      if (!mActive || btn.dataset.done) return;
+      btn.dataset.done = "1";
+      if (mMines.has(idx)) {
+        mActive = false;
+        btn.textContent = "💣";
+        btn.classList.add("boom");
+        renderMinesBoard(true);
+        document.getElementById("minesStartBtn").disabled = false;
+        document.getElementById("minesCashBtn").disabled = true;
+        document.getElementById("minesMultText").textContent = "ضریب فعلی: 0.00x";
+        notify(document.getElementById("minesAlert"), "به مین برخورد کردید و این دست پایان یافت.", false);
+      } else {
+        mRevealed += 1;
+        btn.textContent = "💎";
+        btn.classList.add("safe");
+        mMult = calcMineMult(mMines.size, mRevealed);
+        document.getElementById("minesMultText").textContent = `ضریب فعلی: ${mMult.toFixed(2)}x`;
+        document.getElementById("minesCashBtn").disabled = false;
+      }
+    }
+
+    document.getElementById("minesStartBtn").addEventListener("click", () => {
+      const alertEl = document.getElementById("minesAlert");
+      const stake = Number(document.getElementById("minesBetInput").value) || 0;
+      const count = Number(document.getElementById("minesCountSelect").value) || 5;
+      if (stake < 10000 || stake > state.balance) return notify(alertEl, "مبلغ نامعتبر یا موجودی تستی ناکافی است.", false);
+
+      adjustBalance(-stake, "ورود به بازی مین‌روب تستی");
+      mStake = stake;
+      mRevealed = 0;
+      mMult = 1.0;
+      mActive = true;
+      mMines = new Set();
+      while (mMines.size < count) {
+        mMines.add(Math.floor(Math.random() * 25));
+      }
+      alertEl.className = "alert-box";
+      document.getElementById("minesMultText").textContent = "ضریب فعلی: 1.00x";
+      document.getElementById("minesStartBtn").disabled = true;
+      document.getElementById("minesCashBtn").disabled = true;
+      renderMinesBoard(false);
+    });
+
+    document.getElementById("minesCashBtn").addEventListener("click", () => {
+      if (!mActive || mRevealed === 0) return;
+      mActive = false;
+      const win = mStake * mMult;
+      adjustBalance(win, `برداشت مین‌روب (${mMult.toFixed(2)}x)`);
+      renderMinesBoard(true);
+      document.getElementById("minesStartBtn").disabled = false;
+      document.getElementById("minesCashBtn").disabled = true;
+      notify(document.getElementById("minesAlert"), `برداشت موفق! ${fmt(win)} به موجودی اضافه شد.`, true);
+    });
+
+    renderMinesBoard(false);
+
+    // ۳. بازی های/لو (Hi-Lo)
+    let hActive = false, hStake = 0, hCard = 7, hMult = 1.0, hSteps = 0;
+    function updateHiloControls() {
+      document.getElementById("hiloCardVal").textContent = hCard;
+      document.getElementById("hiloMultText").textContent = `ضریب فعلی: ${hMult.toFixed(2)}x`;
+      document.getElementById("hiloStartBtn").disabled = hActive;
+      document.getElementById("hiloHighBtn").disabled = !hActive;
+      document.getElementById("hiloLowBtn").disabled = !hActive;
+      document.getElementById("hiloCashBtn").disabled = !(hActive && hSteps > 0);
+    }
+
+    document.getElementById("hiloStartBtn").addEventListener("click", () => {
+      const alertEl = document.getElementById("hiloAlert");
+      const stake = Number(document.getElementById("hiloBetInput").value) || 0;
+      if (stake < 10000 || stake > state.balance) return notify(alertEl, "مبلغ نامعتبر یا موجودی تستی ناکافی است.", false);
+
+      adjustBalance(-stake, "ورود به بازی های/لو تستی");
+      hStake = stake;
+      hCard = Math.floor(Math.random() * 13) + 1;
+      hMult = 1.0;
+      hSteps = 0;
+      hActive = true;
+      alertEl.className = "alert-box";
+      document.getElementById("hiloInfo").textContent = "کارت بعدی بالاتر/مساوی یا پایین‌تر/مساوی است؟";
+      updateHiloControls();
+    });
+
+    function playHiloGuess(isHigh) {
+      if (!hActive) return;
+      const nextCard = Math.floor(Math.random() * 13) + 1;
+      const winGuess = isHigh ? nextCard >= hCard : nextCard <= hCard;
+      hCard = nextCard;
+      if (winGuess) {
+        hSteps += 1;
+        hMult = Number((hMult * 1.35).toFixed(2));
+        document.getElementById("hiloInfo").textContent = `حدس درست! ادامه دهید یا برداشت کنید.`;
+        updateHiloControls();
+      } else {
+        hActive = false;
+        updateHiloControls();
+        document.getElementById("hiloInfo").textContent = `کارت جدید ${nextCard} شد و حدس ناموفق بود.`;
+        notify(document.getElementById("hiloAlert"), "این دست های/لو از دست رفت.", false);
+      }
+    }
+
+    document.getElementById("hiloHighBtn").addEventListener("click", () => playHiloGuess(true));
+    document.getElementById("hiloLowBtn").addEventListener("click", () => playHiloGuess(false));
+    document.getElementById("hiloCashBtn").addEventListener("click", () => {
+      if (!hActive || hSteps === 0) return;
+      const win = hStake * hMult;
+      hActive = false;
+      updateHiloControls();
+      adjustBalance(win, `برداشت های/لو (${hMult.toFixed(2)}x)`);
+      notify(document.getElementById("hiloAlert"), `برداشت موفق! ${fmt(win)} به موجودی اضافه شد.`, true);
+    });
+
+    // ۴. تاس شانس
+    document.getElementById("diceRollBtn").addEventListener("click", () => {
+      const alertEl = document.getElementById("diceAlert");
+      const stake = Number(document.getElementById("diceBetInput").value) || 0;
+      if (stake < 10000 || stake > state.balance) return notify(alertEl, "مبلغ نامعتبر یا موجودی تستی ناکافی است.", false);
+
+      adjustBalance(-stake, "شرط تاس شانس");
       const d1 = Math.floor(Math.random() * 6) + 1;
       const d2 = Math.floor(Math.random() * 6) + 1;
       const sum = d1 + d2;
-
-      document.getElementById("die1").textContent = d1;
-      document.getElementById("die2").textContent = d2;
+      document.getElementById("diceA").textContent = d1;
+      document.getElementById("diceB").textContent = d2;
 
       if (sum > 7) {
-        const winAmount = stake * 1.9;
-        updateBalance(winAmount, `برد تاس (مجموع ${sum} > ۷)`);
-        showMessage(msgEl, `مجموع تاس‌ها ${sum} شد! شما برنده ${formatToman(winAmount)} شدید.`, true);
+        const win = stake * 1.9;
+        adjustBalance(win, `برد تاس (جمع ${sum})`);
+        notify(alertEl, `جمع تاس‌ها ${sum} شد! برنده ${fmt(win)} شدید.`, true);
       } else {
-        showMessage(msgEl, `مجموع تاس‌ها ${sum} شد (نیاز به بالای ۷ بود). این راند ناموفق بود.`, false);
+        notify(alertEl, `جمع تاس‌ها ${sum} شد (نیاز به جمع بالای ۷ بود).`, false);
       }
     });
 
-    // شارژ تستی
-    function handleDeposit(amount) {
-      const msgEl = document.getElementById("walletMsg");
-      if (amount < 50000) {
-        showMessage(msgEl, "حداقل مبلغ شارژ آزمایشی ۵۰,۰۰۰ تومان است.", false);
-        return;
+    // ۵. چرخ شانس
+    const wheelSlices = [
+      { label: "0x (پوچ)", mult: 0 },
+      { label: "1.2x", mult: 1.2 },
+      { label: "1.5x", mult: 1.5 },
+      { label: "2.0x", mult: 2.0 },
+      { label: "3.0x", mult: 3.0 }
+    ];
+    document.getElementById("wheelSpinBtn").addEventListener("click", () => {
+      const alertEl = document.getElementById("wheelAlert");
+      const stake = Number(document.getElementById("wheelBetInput").value) || 0;
+      if (stake < 10000 || stake > state.balance) return notify(alertEl, "مبلغ نامعتبر یا موجودی تستی ناکافی است.", false);
+
+      adjustBalance(-stake, "شرط چرخ شانس تستی");
+      const pick = wheelSlices[Math.floor(Math.random() * wheelSlices.length)];
+      document.getElementById("wheelBox").textContent = `نتیجه: ${pick.label}`;
+
+      if (pick.mult > 0) {
+        const win = stake * pick.mult;
+        adjustBalance(win, `برد چرخ شانس (${pick.label})`);
+        notify(alertEl, `چرخ روی ${pick.label} ایستاد و ${fmt(win)} به موجودی واریز شد.`, true);
+      } else {
+        notify(alertEl, "چرخ روی پوچ (0x) ایستاد.", false);
       }
-      updateBalance(amount, "شارژ حساب از درگاه شبیه‌سازی‌شده");
-      showMessage(msgEl, `مبلغ ${formatToman(amount)} به‌صورت آزمایشی به کیف پول اضافه شد.`, true);
+    });
+
+    // کیف پول تستی بدون درگاه بانکی
+    function doTopup(amount) {
+      const alertEl = document.getElementById("walletAlert");
+      if (amount < 50000) return notify(alertEl, "حداقل مبلغ شارژ تستی ۵۰,۰۰۰ تومان است.", false);
+      adjustBalance(amount, "شارژ تستی داخلی (بدون درگاه بانکی)");
+      notify(alertEl, `مبلغ ${fmt(amount)} به‌صورت آزمایشی به موجودی اضافه شد.`, true);
     }
 
-    document.getElementById("submitDepositBtn").addEventListener("click", () => {
-      const amt = Number(document.getElementById("depositAmount").value) || 0;
-      handleDeposit(amt);
+    document.getElementById("autoTopupBtn").addEventListener("click", () => {
+      adjustBalance(2000000, "شارژ سریع تستی (+۲ میلیون)");
     });
 
-    document.getElementById("quickDepositBtn").addEventListener("click", () => {
-      document.querySelector('[data-tab="wallet"]').click();
-      handleDeposit(2000000);
+    document.getElementById("customTopupBtn").addEventListener("click", () => {
+      doTopup(Number(document.getElementById("customTopupInput").value) || 0);
     });
 
-    function renderHistory() {
-      const list = document.getElementById("historyList");
-      if (state.history.length === 0) {
-        list.innerHTML = `<li><span>هنوز هیچ شرط یا تراکنشی ثبت نشده است.</span></li>`;
+    document.getElementById("resetDemoBtn").addEventListener("click", () => {
+      state.balance = 10000000;
+      state.logs = [];
+      saveState();
+      document.getElementById("balDisplay").textContent = fmt(state.balance);
+      renderLogs();
+      notify(document.getElementById("walletAlert"), "موجودی تستی روی ۱۰,۰۰۰,۰۰۰ تومان ریست شد.", true);
+    });
+
+    function renderLogs() {
+      const ul = document.getElementById("logsContainer");
+      if (!state.logs.length) {
+        ul.innerHTML = `<li><span>هنوز هیچ سابقه یا تراکنش آزمایشی ثبت نشده است.</span></li>`;
         return;
       }
-      list.innerHTML = state.history
-        .map(
-          (h) => `
-          <li>
-            <span><strong>${h.title}</strong> <small style="color:var(--muted);">(${h.timeStr})</small></span>
-            <span style="color:#34d399;font-weight:bold;">${h.amountText}</span>
-          </li>
-        `
-        )
-        .join("");
+      ul.innerHTML = state.logs.map((l) => `
+        <li>
+          <span><strong>${l.title}</strong> <small style="color:var(--muted);">(${l.time})</small></span>
+          <span style="font-weight:bold;color:${l.positive ? "#34d399" : "#f87171"};">${l.amount}</span>
+        </li>
+      `).join("");
     }
 
-    document.getElementById("clearHistoryBtn").addEventListener("click", () => {
-      state.history = [];
-      renderHistory();
+    document.getElementById("clearLogsBtn").addEventListener("click", () => {
+      state.logs = [];
+      saveState();
+      renderLogs();
     });
 
-    // مدیریت تب‌ها
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
+    document.querySelectorAll(".chip[data-filter]").forEach((ch) => {
+      ch.addEventListener("click", () => {
+        document.querySelectorAll(".chip[data-filter]").forEach((x) => x.classList.remove("active"));
+        ch.classList.add("active");
+        matchFilter = ch.dataset.filter;
+        renderMatches();
+      });
+    });
+
+    document.getElementById("searchMatch").addEventListener("input", (e) => {
+      searchTerm = e.target.value;
+      renderMatches();
+    });
+
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-
-        const targetTab = btn.dataset.tab;
-        ["sports", "games", "wallet", "history"].forEach((t) => {
-          document.getElementById(`tab-${t}`).classList.toggle("hidden", t !== targetTab);
+        const sec = btn.dataset.section;
+        ["sports", "casino", "wallet", "history"].forEach((s) => {
+          document.getElementById(`sec-${s}`).classList.toggle("hidden", s !== sec);
         });
       });
     });
 
+    document.getElementById("balDisplay").textContent = fmt(state.balance);
     renderMatches();
     renderSlip();
+    renderLogs();
   </script>
 </body>
 </html>
