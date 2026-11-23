@@ -24,7 +24,6 @@
       --gold-soft: rgba(245, 158, 11, 0.15);
       --danger: #ef4444;
       --danger-soft: rgba(239, 68, 68, 0.15);
-      --purple: #a855f7;
       --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
@@ -75,8 +74,10 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 9px 11px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       outline: none;
+      width: 100%;
+      min-width: 0;
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
@@ -98,7 +99,7 @@
         "header header"
         "sidebar main";
       grid-template-columns: 245px minmax(0, 1fr);
-      grid-template-rows: auto minmax(calc(100vh - 66px), 1fr);
+      grid-template-rows: 66px minmax(calc(100vh - 66px), 1fr);
       min-height: 100vh;
       width: 100%;
       max-width: 100vw;
@@ -121,15 +122,15 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      padding: 8px 14px;
+      padding: 8px 16px;
       min-height: 66px;
-      background: rgba(11, 16, 28, 0.94);
+      background: rgba(11, 16, 28, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
+      width: 100%;
     }
 
-    .topbar-brand-group {
+    .brand-wrap {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -141,7 +142,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       letter-spacing: -0.2px;
       white-space: nowrap;
     }
@@ -149,6 +150,7 @@
     .brand-badge {
       width: 34px;
       height: 34px;
+      flex-shrink: 0;
       border-radius: 10px;
       background: linear-gradient(135deg, var(--accent), var(--blue));
       display: grid;
@@ -157,11 +159,10 @@
       font-weight: 900;
       font-size: 1rem;
       box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
-      flex-shrink: 0;
     }
 
     .brand-sub {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       color: var(--accent);
       background: var(--accent-soft);
       padding: 2px 7px;
@@ -175,23 +176,22 @@
       gap: 6px;
       background: var(--bg-elev-2);
       border: 1px solid var(--border);
-      padding: 4px 7px 4px 10px;
+      padding: 4px 6px 4px 10px;
       border-radius: var(--radius-md);
-      flex-wrap: wrap;
+      min-width: 0;
     }
 
     .wallet-bar select {
-      padding: 5px 6px;
-      font-size: 0.78rem;
+      padding: 5px 7px;
+      font-size: 0.8rem;
       background: var(--bg-elev-1);
+      width: auto;
     }
 
     .balance-readout {
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--accent);
-      min-width: 84px;
-      text-align: left;
       white-space: nowrap;
     }
 
@@ -259,7 +259,7 @@
     /* Sidebar */
     .sidebar {
       grid-area: sidebar;
-      background: rgba(13, 19, 33, 0.95);
+      background: rgba(13, 19, 33, 0.94);
       border-left: 1px solid var(--border);
       padding: 14px 12px;
       display: flex;
@@ -269,12 +269,11 @@
     }
 
     .nav-group-title {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--text-dim);
       font-weight: 700;
       padding: 0 8px;
       margin-bottom: 6px;
-      text-transform: uppercase;
     }
 
     .nav-list {
@@ -291,7 +290,7 @@
       gap: 8px;
       padding: 9px 11px;
       border-radius: var(--radius-sm);
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--text-muted);
       text-align: right;
@@ -315,7 +314,6 @@
       border-radius: 999px;
       background: var(--bg-elev-3);
       color: var(--blue);
-      white-space: nowrap;
     }
 
     .nav-tag.live {
@@ -337,9 +335,9 @@
     /* Main Content */
     .main-area {
       grid-area: main;
-      padding: 16px;
-      overflow-y: auto;
+      padding: 18px;
       overflow-x: hidden;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -371,14 +369,14 @@
     }
 
     .hero-title {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 800;
       margin-bottom: 6px;
     }
 
     .hero-desc {
       color: var(--text-muted);
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       max-width: 660px;
     }
 
@@ -391,7 +389,7 @@
     }
 
     .section-title {
-      font-size: 1.02rem;
+      font-size: 1.04rem;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -406,7 +404,7 @@
     }
 
     .pill {
-      padding: 5px 11px;
+      padding: 6px 11px;
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 600;
@@ -425,7 +423,7 @@
     /* Games Grid */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
       gap: 12px;
     }
 
@@ -433,58 +431,47 @@
       background: var(--bg-elev-1);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 12px;
+      padding: 13px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
       min-width: 0;
-      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .game-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow);
     }
 
     .game-card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
     }
 
     .game-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
       background: var(--bg-elev-2);
       border: 1px solid var(--border);
       display: grid;
       place-items: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
+      font-size: 1.25rem;
     }
 
     .game-edge {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       color: var(--accent);
       background: var(--accent-soft);
       padding: 2px 7px;
       border-radius: 999px;
       font-weight: 700;
-      white-space: nowrap;
     }
 
     .game-name {
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
     }
 
     .game-desc {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
-      min-height: 32px;
     }
 
     /* Cabinet / Active Game Workspace */
@@ -519,7 +506,7 @@
     }
 
     .field-label {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       font-weight: 600;
       display: flex;
@@ -541,22 +528,22 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-height: 340px;
+      min-height: 360px;
       min-width: 0;
     }
 
     .history-pills {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       flex-wrap: wrap;
       min-height: 26px;
     }
 
     .hist-pill {
-      padding: 2px 8px;
+      padding: 3px 8px;
       border-radius: 999px;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 700;
       background: var(--bg-elev-3);
       border: 1px solid var(--border);
@@ -584,7 +571,7 @@
       background: var(--bg-base);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 7px 9px;
+      padding: 8px;
       min-width: 0;
     }
 
@@ -594,12 +581,11 @@
     }
 
     .hud-val {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       font-weight: 800;
       margin-top: 2px;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     .stage-canvas-box {
@@ -615,11 +601,11 @@
       gap: 12px;
       position: relative;
       overflow: hidden;
-      min-width: 0;
+      width: 100%;
     }
 
     .crash-readout {
-      font-size: clamp(2rem, 8vw, 2.8rem);
+      font-size: 2.5rem;
       font-weight: 900;
       line-height: 1.1;
     }
@@ -630,7 +616,7 @@
 
     .crash-track {
       width: 100%;
-      max-width: 540px;
+      max-width: 520px;
       height: 12px;
       background: var(--bg-elev-2);
       border-radius: 999px;
@@ -648,19 +634,19 @@
     /* Interactive Game Boards */
     .mines-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(42px, 54px));
       gap: 6px;
-      width: 100%;
-      max-width: 290px;
+      justify-content: center;
     }
 
     .mine-cell {
-      aspect-ratio: 1;
       width: 100%;
+      aspect-ratio: 1;
+      max-width: 54px;
       border-radius: 9px;
       background: var(--bg-elev-2);
       border: 1px solid var(--border-strong);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 800;
       display: grid;
       place-items: center;
@@ -683,7 +669,7 @@
       grid-template-columns: repeat(8, minmax(0, 1fr));
       gap: 5px;
       width: 100%;
-      max-width: 380px;
+      max-width: 400px;
     }
 
     .keno-num {
@@ -691,7 +677,7 @@
       border-radius: 7px;
       background: var(--bg-elev-2);
       border: 1px solid var(--border);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 700;
       display: grid;
       place-items: center;
@@ -720,7 +706,7 @@
       flex-direction: column-reverse;
       gap: 6px;
       width: 100%;
-      max-width: 340px;
+      max-width: 360px;
     }
 
     .tower-row {
@@ -770,7 +756,7 @@
     .playing-card {
       width: 64px;
       height: 90px;
-      border-radius: 9px;
+      border-radius: 10px;
       background: #f8fafc;
       color: #0f172a;
       border: 2px solid #cbd5e1;
@@ -785,13 +771,6 @@
     .playing-card.red { color: #dc2626; }
 
     /* Sports / Football */
-    .sports-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(270px, 1fr);
-      gap: 14px;
-      min-width: 0;
-    }
-
     .matches-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
@@ -803,7 +782,7 @@
       background: var(--bg-elev-1);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 12px;
+      padding: 13px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -816,18 +795,16 @@
       justify-content: space-between;
       font-size: 0.76rem;
       color: var(--text-muted);
-      gap: 6px;
     }
 
     .live-badge {
       background: var(--danger-soft);
       color: #fca5a5;
       border: 1px solid rgba(239, 68, 68, 0.35);
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.7rem;
-      white-space: nowrap;
     }
 
     .teams-row {
@@ -842,7 +819,6 @@
       font-size: 0.88rem;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     .team-name.away {
@@ -854,10 +830,9 @@
       border: 1px solid var(--border);
       padding: 3px 10px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--blue);
-      white-space: nowrap;
     }
 
     .odds-grid {
@@ -878,11 +853,6 @@
       min-width: 0;
     }
 
-    .odd-btn:hover {
-      border-color: var(--blue);
-      background: var(--blue-soft);
-    }
-
     .odd-btn.selected {
       background: var(--accent);
       color: #03150e;
@@ -895,7 +865,13 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      min-width: 0;
+    }
+
+    .sports-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(260px, 1fr);
+      gap: 14px;
+      align-items: start;
     }
 
     .card-box {
@@ -920,7 +896,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       min-width: 520px;
     }
 
@@ -937,12 +913,11 @@
     }
 
     .status-badge {
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 999px;
       font-size: 0.72rem;
       font-weight: 700;
       display: inline-block;
-      white-space: nowrap;
     }
 
     .status-open { background: var(--blue-soft); color: #7dd3fc; }
@@ -966,7 +941,7 @@
     }
 
     .chat-head {
-      padding: 11px 14px;
+      padding: 12px 14px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -977,7 +952,7 @@
     .chat-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 10px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -988,8 +963,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 8px 10px;
-      font-size: 0.8rem;
-      word-break: break-word;
+      font-size: 0.82rem;
     }
 
     .chat-msg.self {
@@ -999,16 +973,15 @@
 
     .chat-sender {
       font-weight: 700;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--blue);
       margin-bottom: 2px;
       display: flex;
       justify-content: space-between;
-      gap: 6px;
     }
 
     .chat-form {
-      padding: 8px;
+      padding: 10px;
       border-top: 1px solid var(--border);
       display: flex;
       gap: 6px;
@@ -1018,12 +991,12 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(2, 6, 15, 0.82);
+      background: rgba(2, 6, 15, 0.78);
       backdrop-filter: blur(6px);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 14px;
       z-index: 100;
     }
 
@@ -1037,12 +1010,12 @@
       background: var(--bg-elev-1);
       border: 1px solid var(--border-strong);
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: 18px;
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       gap: 12px;
-      max-height: 88vh;
+      max-height: 90vh;
       overflow-y: auto;
     }
 
@@ -1051,8 +1024,7 @@
       align-items: center;
       justify-content: space-between;
       font-weight: 800;
-      font-size: 0.98rem;
-      gap: 8px;
+      font-size: 1rem;
     }
 
     /* Toast */
@@ -1074,7 +1046,7 @@
       border: 1px solid var(--border-strong);
       border-right: 4px solid var(--accent);
       border-radius: var(--radius-sm);
-      padding: 9px 12px;
+      padding: 10px 12px;
       font-size: 0.82rem;
       font-weight: 600;
       box-shadow: var(--shadow);
@@ -1090,7 +1062,7 @@
       color: #fde68a;
     }
 
-    /* Tablet & Mobile Responsive Rules */
+    /* Mobile & Tablet Responsive Rules */
     @media (max-width: 980px) {
       .app-shell,
       .app-shell.chat-open {
@@ -1101,15 +1073,39 @@
         grid-template-rows: auto minmax(0, 1fr);
       }
 
+      .topbar {
+        flex-wrap: wrap;
+        padding: 8px 10px;
+      }
+
+      .brand-sub {
+        display: none;
+      }
+
+      .wallet-bar {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px 8px;
+      }
+
+      .topbar-actions {
+        gap: 4px;
+      }
+
+      .topbar-actions .btn-sm {
+        padding: 5px 7px;
+        font-size: 0.72rem;
+      }
+
       .sidebar {
         position: fixed;
         top: 0;
-        right: -280px;
+        right: -275px;
         width: 265px;
         height: 100vh;
         z-index: 80;
-        transition: right 0.22s ease;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+        transition: right 0.2s ease;
       }
 
       .sidebar.mobile-open {
@@ -1120,60 +1116,30 @@
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
         width: 100%;
+        max-width: 360px;
         height: 100vh;
         z-index: 85;
       }
 
-      .cabinet-shell,
-      .sports-layout,
-      .panel-grid-2 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hud-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 560px) {
-      .topbar {
-        padding: 8px 10px;
-        gap: 6px;
-      }
-
-      .brand-sub {
-        display: none;
-      }
-
-      .wallet-bar {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .topbar-actions {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
       .main-area {
         padding: 12px 10px;
-        gap: 12px;
+      }
+
+      .cabinet-shell,
+      .panel-grid-2,
+      .sports-layout,
+      .hud-strip {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .games-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
+        gap: 10px;
       }
 
-      .matches-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .keno-grid {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+      .crash-readout {
+        font-size: 2rem;
       }
     }
   </style>
@@ -1182,7 +1148,7 @@
   <div id="appShell" class="app-shell">
     <!-- Topbar -->
     <header class="topbar">
-      <div class="topbar-brand-group">
+      <div class="brand-wrap">
         <button id="mobileMenuBtn" class="btn btn-ghost btn-sm" aria-label="منو">☰</button>
         <div class="brand">
           <div class="brand-badge">SB</div>
@@ -1207,19 +1173,21 @@
       <div class="topbar-actions">
         <span id="userChip" class="pill active" style="cursor:pointer;">مهمان</span>
         <button id="authActionBtn" class="btn btn-blue btn-sm">ورود / ثبت‌نام</button>
-        <button id="gatewayOpenBtn" class="btn btn-ghost btn-sm">سرور</button>
-        <button id="provablyFairOpenBtn" class="btn btn-ghost btn-sm">Fair</button>
+        <button id="gatewayOpenBtn" class="btn btn-ghost btn-sm">سرور و API</button>
+        <button id="provablyFairOpenBtn" class="btn btn-ghost btn-sm">Provably Fair</button>
         <button id="chatToggleBtn" class="btn btn-ghost btn-sm">چت</button>
       </div>
     </header>
 
     <!-- Sidebar -->
     <aside id="sidebar" class="sidebar">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div class="nav-group-title" style="margin:0;">منوی اصلی</div>
-        <button id="closeSidebarBtn" class="btn btn-ghost btn-sm" aria-label="بستن منو">✕</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
+        <span style="font-weight:800;font-size:0.9rem;">ناوبری Sofyan Bet</span>
+        <button id="closeSidebarBtn" class="btn btn-ghost btn-sm">✕</button>
       </div>
+
       <div>
+        <div class="nav-group-title">منوی اصلی</div>
         <div class="nav-list">
           <button class="nav-item active" data-view="lobby">
             <span>🎰 لابی کازینو</span>
@@ -1272,15 +1240,15 @@
       <!-- 1. Lobby -->
       <section id="view-lobby" class="view-section active">
         <div class="hero-banner">
-          <div style="min-width:0;flex:1;">
+          <div>
             <div class="hero-title">Sofyan Bet — تجربه یکپارچه کازینو و پیش‌بینی فوتبال</div>
             <p class="hero-desc">
               تمامی ۱۴ بازی با چرخه مستقل، کابینت استاندارد، تاریخچه ضرایب و نتایج، کیف پول چندارزی با پشتیبانی از شبا و کارت بانکی، تیکتینگ ۲۴ ساعته و پنل مدیریت یکپارچه آماده اجراست.
             </p>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button id="heroCrashBtn" class="btn btn-primary btn-sm">🚀 ورود به Crash</button>
-            <button id="heroSportsBtn" class="btn btn-blue btn-sm">⚽ فوتبال زنده</button>
+            <button id="heroCrashBtn" class="btn btn-primary btn-sm">🚀 ورود سریع به Crash</button>
+            <button id="heroSportsBtn" class="btn btn-blue btn-sm">⚽ مسابقات زنده فوتبال</button>
           </div>
         </div>
 
@@ -1306,8 +1274,8 @@
             <span id="cabinetGameEdge" class="game-edge">RTP 99.0%</span>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;width:100%;max-width:420px;">
-            <select id="quickGameSwitcher" aria-label="انتخاب سریع بازی" style="flex:1;min-width:150px;"></select>
-            <button id="backToLobbyBtn" class="btn btn-ghost btn-sm">لابی</button>
+            <select id="quickGameSwitcher" aria-label="انتخاب سریع بازی" style="flex:1;"></select>
+            <button id="backToLobbyBtn" class="btn btn-ghost btn-sm">بازگشت به لابی</button>
           </div>
         </div>
 
@@ -1327,9 +1295,9 @@
           <div class="section-title">⚽ پیش‌بینی زنده و پیش‌مسابقه فوتبال</div>
           <div id="leagueFilters" class="filter-pills">
             <button class="pill active" data-league="ALL">همه لیگ‌ها</button>
-            <button class="pill" data-league="Premier League">لیگ برتر</button>
+            <button class="pill" data-league="Premier League">لیگ برتر انگلیس</button>
             <button class="pill" data-league="La Liga">لالیگا</button>
-            <button class="pill" data-league="Champions League">قهرمانان</button>
+            <button class="pill" data-league="Champions League">لیگ قهرمانان</button>
             <button class="pill" data-league="Serie A">سری آ</button>
           </div>
         </div>
@@ -1337,8 +1305,8 @@
         <div class="sports-layout">
           <div id="matchesGrid" class="matches-grid"></div>
 
-          <div class="card-box" style="align-self:start;">
-            <div style="font-weight:800;font-size:0.96rem;">🧾 برگه پیش‌بینی (Bet Slip)</div>
+          <div class="card-box">
+            <div style="font-weight:800;font-size:1rem;">🧾 برگه پیش‌بینی (Bet Slip)</div>
             <div id="betSlipSelection" style="font-size:0.84rem;color:var(--text-muted);">
               هنوز انتخابی روی ضرایب ثبت نشده است.
             </div>
@@ -1386,7 +1354,7 @@
 
         <div class="panel-grid-2">
           <div class="card-box">
-            <div style="font-weight:800;font-size:0.96rem;color:var(--accent);">📥 واریز وجه</div>
+            <div style="font-weight:800;font-size:1rem;color:var(--accent);">📥 واریز وجه</div>
             <div class="field-group">
               <label class="field-label" for="depositMethod">روش واریز</label>
               <select id="depositMethod">
@@ -1404,7 +1372,7 @@
                 <option value="BTC">BTC — Bitcoin SegWit</option>
               </select>
               <div style="display:flex;gap:6px;align-items:center;margin-top:4px;">
-                <input id="depositAddressInput" type="text" readonly class="mono" style="flex:1;min-width:0;" value="TSoFyAn9xK4mP7vL2nR8qW3zB6cD5eF1gH" />
+                <input id="depositAddressInput" type="text" readonly class="mono" style="flex:1;" value="TSoFyAn9xK4mP7vL2nR8qW3zB6cD5eF1gH" />
                 <button id="copyDepositAddrBtn" class="btn btn-ghost btn-sm">کپی</button>
               </div>
             </div>
@@ -1423,7 +1391,7 @@
           </div>
 
           <div class="card-box">
-            <div style="font-weight:800;font-size:0.96rem;color:var(--blue);">📤 برداشت وجه</div>
+            <div style="font-weight:800;font-size:1rem;color:var(--blue);">📤 برداشت وجه</div>
             <div class="field-group">
               <label class="field-label" for="withdrawMethod">روش برداشت</label>
               <select id="withdrawMethod">
@@ -1486,7 +1454,7 @@
 
         <div class="panel-grid-2">
           <div class="card-box">
-            <div style="font-weight:800;font-size:0.96rem;">✉️ ایجاد تیکت جدید</div>
+            <div style="font-weight:800;font-size:1rem;">✉️ ایجاد تیکت جدید</div>
             <div class="field-group">
               <label class="field-label" for="ticketTopic">موضوع تیکت</label>
               <select id="ticketTopic">
@@ -1518,13 +1486,13 @@
           </div>
 
           <div class="card-box">
-            <div style="font-weight:800;font-size:0.96rem;">💬 گفت‌وگوی تیکت انتخاب‌شده</div>
-            <div id="ticketThreadBox" style="display:flex;flex-direction:column;gap:8px;max-height:240px;overflow-y:auto;background:var(--bg-base);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border);">
+            <div style="font-weight:800;font-size:1rem;">💬 گفت‌وگوی تیکت انتخاب‌شده</div>
+            <div id="ticketThreadBox" style="display:flex;flex-direction:column;gap:8px;max-height:250px;overflow-y:auto;background:var(--bg-base);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border);">
               <div style="color:var(--text-muted);font-size:0.84rem;">یک تیکت را از جدول پایین انتخاب کنید یا تیکت جدید بسازید.</div>
             </div>
             <div style="display:flex;gap:6px;">
-              <input id="ticketReplyInput" type="text" placeholder="پاسخ خود را بنویسید..." style="flex:1;min-width:0;" />
-              <button id="sendTicketReplyBtn" class="btn btn-blue btn-sm">ارسال</button>
+              <input id="ticketReplyInput" type="text" placeholder="پاسخ خود را بنویسید..." style="flex:1;" />
+              <button id="sendTicketReplyBtn" class="btn btn-blue btn-sm">ارسال پاسخ</button>
             </div>
           </div>
         </div>
@@ -1554,7 +1522,7 @@
 
         <div class="hud-strip">
           <div class="hud-box">
-            <div class="hud-label">کاربران</div>
+            <div class="hud-label">کاربران ثبت‌شده</div>
             <div id="adminUsersCount" class="hud-val mono">0</div>
           </div>
           <div class="hud-box">
@@ -1562,7 +1530,7 @@
             <div id="adminOpenTicketsCount" class="hud-val mono">0</div>
           </div>
           <div class="hud-box">
-            <div class="hud-label">تراکنش‌ها</div>
+            <div class="hud-label">تعداد تراکنش‌ها</div>
             <div id="adminTxCount" class="hud-val mono">0</div>
           </div>
           <div class="hud-box">
@@ -1599,7 +1567,7 @@
               <input id="adminTicketReply" type="text" placeholder="پاسخ رسمی تیم پشتیبانی..." />
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <button id="adminReplyTicketBtn" class="btn btn-blue btn-sm">ثبت پاسخ</button>
+              <button id="adminReplyTicketBtn" class="btn btn-blue btn-sm">ارسال پاسخ</button>
               <button id="adminCloseTicketBtn" class="btn btn-ghost btn-sm">بستن تیکت</button>
             </div>
           </div>
@@ -1629,7 +1597,7 @@
       </div>
       <div id="chatMessages" class="chat-messages"></div>
       <form id="chatForm" class="chat-form">
-        <input id="chatInput" type="text" placeholder="پیام در چت عمومی..." style="flex:1;min-width:0;" />
+        <input id="chatInput" type="text" placeholder="پیام در چت عمومی..." style="flex:1;" />
         <button type="submit" class="btn btn-primary btn-sm">ارسال</button>
       </form>
     </aside>
@@ -1686,7 +1654,7 @@
   <div id="gatewayModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="gatewayModalTitle">
     <div class="modal-card">
       <div class="modal-head">
-        <span id="gatewayModalTitle">تنظیمات درگاه سرور و IP</span>
+        <span id="gatewayModalTitle">تنظیمات درگاه سرور و IP (SofyanBackendGateway)</span>
         <button class="btn btn-ghost btn-sm" data-close-modal="gatewayModal">✕</button>
       </div>
 
@@ -1707,7 +1675,7 @@
       </div>
 
       <div class="field-group">
-        <label class="field-label" for="gwHost">آدرس IP یا دامنه سرور</label>
+        <label class="field-label" for="gwHost">آدرس IP یا دامنه سرور (Host / IP)</label>
         <input id="gwHost" type="text" class="mono" placeholder="127.0.0.1 یا api.example.com" />
       </div>
 
@@ -1722,8 +1690,8 @@
       </div>
 
       <div class="field-group">
-        <label class="field-label" for="gwToken">توکن سرور (اختیاری)</label>
-        <input id="gwToken" type="text" class="mono" placeholder="Bearer token" />
+        <label class="field-label" for="gwToken">توکن احراز هویت سرور</label>
+        <input id="gwToken" type="text" class="mono" placeholder="اختیاری" />
       </div>
 
       <div style="display:flex;gap:8px;justify-content:flex-end;">
@@ -1773,12 +1741,12 @@
       const $ = (id) => document.getElementById(id);
 
       const CURRENCIES = {
-        USDT: { label: "USDT", symbol: "USDT", decimals: 2 },
-        IRT:  { label: "IRT",  symbol: "تومان", decimals: 0 },
-        BTC:  { label: "BTC",  symbol: "BTC",  decimals: 5 },
-        ETH:  { label: "ETH",  symbol: "ETH",  decimals: 4 },
-        TON:  { label: "TON",  symbol: "TON",  decimals: 2 },
-        TRX:  { label: "TRX",  symbol: "TRX",  decimals: 1 }
+        USDT: { label: "USDT", symbol: "USDT", decimals: 2, startDemo: 1000 },
+        IRT:  { label: "IRT",  symbol: "تومان", decimals: 0, startDemo: 50000000 },
+        BTC:  { label: "BTC",  symbol: "BTC",  decimals: 5, startDemo: 0.025 },
+        ETH:  { label: "ETH",  symbol: "ETH",  decimals: 4, startDemo: 0.45 },
+        TON:  { label: "TON",  symbol: "TON",  decimals: 2, startDemo: 250 },
+        TRX:  { label: "TRX",  symbol: "TRX",  decimals: 1, startDemo: 12000 }
       };
 
       const GAMES = [
@@ -1792,7 +1760,7 @@
         { id: "tower",      name: "برج (Tower)",          icon: "🏰", cat: "originals", edge: "RTP 98.8%", desc: "صعود پله‌به‌پله در برج با انتخاب خانه امن در هر ردیف." },
         { id: "coinflip",   name: "شیر یا خط (Coinflip)", icon: "🪙", cat: "arcade",    edge: "RTP 99.0%", desc: "سکه شیر یا خط با امکان ادامه زنجیره و برداشت آنی." },
         { id: "wheel",      name: "چرخ شانس (Wheel)",     icon: "🎡", cat: "arcade",    edge: "RTP 98.5%", desc: "گردونه ضرایب رنگی با قابلیت تنظیم ریسک کم، متوسط و زیاد." },
-        { id: "blackjack",  name: "بلک‌جک (Blackjack)",  icon: "🂡", cat: "table",     edge: "RTP 99.4%", desc: "میز ۲۱ با دکمه‌های Hit و Stand و دیلر خودکار." },
+        { id: "blackjack",  name: "بلک‌جک (Blackjack)",  icon: "🂡", cat: "table",     edge: "RTP 99.4%", desc: "میز ۲۱ با دکمه‌های Hit، Stand و Double و دیلر خودکار." },
         { id: "baccarat",   name: "باکارات (Baccarat)",   icon: "💎", cat: "table",     edge: "RTP 98.9%", desc: "شرط روی Player، Banker یا Tie با قوانین استاندارد کارت‌کشی." },
         { id: "roulette",   name: "رولت (Roulette)",      icon: "🎯", cat: "table",     edge: "RTP 97.3%", desc: "رولت اروپایی با انتخاب قرمز/سیاه، زوج/فرد یا عدد مشخص." },
         { id: "diamonds",   name: "الماس‌ها (Diamonds)", icon: "💠", cat: "arcade",    edge: "RTP 98.6%", desc: "ترکیب ۵ گوهر رنگی و پرداخت بر اساس دست‌های هم‌جنس." }
@@ -1831,4 +1799,453 @@
             status: "ANSWERED",
             messages: [
               { sender: "sofyan", role: "کاربر", text: "سلام، برداشت شبا چقدر زمان می‌برد؟", time: "10:15" },
-              { sender: "پشتیبانی ۲۴/۷", role: "ادمین",
+              { sender: "پشتیبانی ۲۴/۷", role: "ادمین", text: "سلام! تسویه شبا در سیکل‌های پایا انجام می‌شود و حداکثر تا ۲۴ ساعت کاری واریز می‌گردد.", time: "10:18" }
+            ]
+          }
+        ],
+        selectedTicketId: "TKT-101",
+        ticketFilter: "ALL",
+        chatMessages: [
+          { sender: "SofyanBot", text: "به چت زنده Sofyan Bet خوش آمدید!", self: false, time: "الان" },
+          { sender: "Armin", text: "ضریب انفجار راند قبل خوب بود!", self: false, time: "الان" }
+        ],
+        gameHistory: Object.fromEntries(GAMES.map((g) => [g.id, []])),
+        footballLeague: "ALL",
+        selectedMatchId: null,
+        selectedOddKey: null,
+        sportsBets: [],
+        matches: [
+          { id: "M-1", league: "Premier League", status: "LIVE", minute: 64, home: "منچسترسیتی", away: "آرسنال", homeScore: 2, awayScore: 1, odds: { H: 1.85, D: 3.45, A: 4.10 } },
+          { id: "M-2", league: "La Liga", status: "LIVE", minute: 38, home: "رئال مادرید", away: "بارسلونا", homeScore: 1, awayScore: 1, odds: { H: 2.25, D: 3.30, A: 3.05 } },
+          { id: "M-3", league: "Champions League", status: "LIVE", minute: 79, home: "بایرن مونیخ", away: "اینتر", homeScore: 1, awayScore: 0, odds: { H: 1.52, D: 4.00, A: 6.20 } },
+          { id: "M-4", league: "Serie A", status: "UPCOMING", minute: 0, home: "ناپولی", away: "یوونتوس", homeScore: 0, awayScore: 0, odds: { H: 2.40, D: 3.10, A: 2.95 } },
+          { id: "M-5", league: "Premier League", status: "UPCOMING", minute: 0, home: "لیورپول", away: "چلسی", homeScore: 0, awayScore: 0, odds: { H: 1.72, D: 3.75, A: 4.50 } },
+          { id: "M-6", league: "La Liga", status: "UPCOMING", minute: 0, home: "اتلتیکو مادرید", away: "سویا", homeScore: 0, awayScore: 0, odds: { H: 1.65, D: 3.60, A: 5.25 } }
+        ]
+      };
+
+      const SofyanBackendGateway = {
+        getBaseUrl() {
+          const g = state.gateway;
+          const cleanHost = (g.host || "127.0.0.1").trim();
+          const cleanPort = (g.port || "").trim();
+          const rawPrefix = (g.prefix || "/api").trim();
+          const cleanPrefix = rawPrefix.startsWith("/") ? rawPrefix : `/${rawPrefix}`;
+          const portPart = cleanPort ? `:${cleanPort}` : ""; return `${g.protocol || "http"}://${cleanHost}${portPart}${cleanPrefix}`; }, async request(path, payload = null, method = "POST") { state.provablyFair.nonce += 1; if (state.gateway.mode !== "remote") return { ok: true, simulated: true, data: payload }; const url = `${this.getBaseUrl()}${path.startsWith("/") ? path : `/${path}`}`; const headers = { "Content-Type": "application/json" }; if (state.gateway.token) headers["Authorization"] = `Bearer ${state.gateway.token}`;
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 3500);
+          try {
+            const res = await fetch(url, { method, headers, body: method === "GET" ? undefined : JSON.stringify(payload || {}), signal: controller.signal });
+            clearTimeout(timer);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`); const data = await res.json().catch(() => ({})); return { ok: true, simulated: false, data }; } catch (err) { clearTimeout(timer); return { ok: true, simulated: true, fallbackReason: err.message, data: payload }; } } };  function showToast(msg, type = "info") { const stack = $("toastStack"); if (!stack) return; const el = document.createElement("div"); el.className = `toast-item ${type === "error" ? "error" : type === "warn" ? "warn" : ""}`;
+        el.textContent = msg;
+        stack.appendChild(el);
+        setTimeout(() => el.remove(), 3200);
+      }
+
+      function formatAmount(val, cur = state.currency) {
+        const cfg = CURRENCIES[cur] || CURRENCIES.USDT;
+        const num = Number(val) || 0;
+        const fixed = cfg.decimals === 0 ? Math.round(num).toLocaleString("en-US") : num.toFixed(cfg.decimals);
+        return `${fixed}${cfg.symbol}`;
+      }
+
+      function getActiveBalance(cur = state.currency) {
+        if (!state.currentUser) return 0;
+        return Number(state.currentUser.balances[cur] ?? 0);
+      }
+
+      function setActiveBalance(newVal, cur = state.currency) {
+        if (!state.currentUser) return;
+        state.currentUser.balances[cur] = Math.max(0, Number(newVal) || 0);
+        updateHeaderUI();
+      }
+
+      function canAffordStake(amount) {
+        if (!state.currentUser) {
+          showToast("ابتدا وارد حساب کاربری شوید یا ثبت‌نام کنید.", "warn");
+          openAuthModal("login");
+          return false;
+        }
+        if (state.currentUser.banned) {
+          showToast("حساب کاربری شما مسدود شده است.", "error");
+          return false;
+        }
+        const amt = Number(amount);
+        if (!Number.isFinite(amt) || amt <= 0) {
+          showToast("مبلغ شرط باید بزرگ‌تر از صفر باشد.", "warn");
+          return false;
+        }
+        if (getActiveBalance() < amt) {
+          showToast("موجودی کیف پول برای این مبلغ کافی نیست.", "error");
+          return false;
+        }
+        return true;
+      }
+
+      function debitStake(amount) {
+        const amt = Number(amount);
+        setActiveBalance(getActiveBalance() - amt);
+        return amt;
+      }
+
+      function creditWin(amount) {
+        const amt = Number(amount);
+        if (amt > 0 && state.currentUser) {
+          setActiveBalance(getActiveBalance() + amt);
+        }
+      }
+
+      function recordGameOutcome(gameId, label, isWin) {
+        const arr = state.gameHistory[gameId] || [];
+        arr.unshift({ label, isWin });
+        if (arr.length > 14) arr.pop();
+        state.gameHistory[gameId] = arr;
+        renderGameHistoryPills();
+      }
+
+      function updateHeaderUI() {
+        const balEl = $("headerBalance");
+        const chipEl = $("userChip");
+        const logoutBtn = $("sidebarLogoutBtn");
+        const gwLabel = $("gatewayStatusLabel");
+        const gwEnd = $("gatewayEndpointLabel");
+        const pfHash = $("pfServerSeedHash");
+        const pfClient = $("pfClientSeedInput");
+        const pfNonce = $("pfNonceInput");
+
+        if (balEl) balEl.textContent = state.currentUser ? formatAmount(getActiveBalance()) : formatAmount(0);
+        if (chipEl) chipEl.textContent = state.currentUser ? `👤 ${state.currentUser.username}` : "مهمان"; if (logoutBtn) logoutBtn.style.display = state.currentUser ? "inline-flex" : "none"; if (gwLabel) { gwLabel.textContent = state.gateway.mode === "remote" ? "سرور متصل" : "شبیه‌ساز محلی"; gwLabel.style.color = state.gateway.mode === "remote" ? "var(--blue)" : "var(--accent)"; } if (gwEnd) gwEnd.textContent = SofyanBackendGateway.getBaseUrl(); if (pfHash) pfHash.value = state.provablyFair.serverSeedHash; if (pfClient && document.activeElement !== pfClient) pfClient.value = state.provablyFair.clientSeed; if (pfNonce) pfNonce.value = String(state.provablyFair.nonce); }  let gameCleanupFn = null; function runGameCleanup() { if (typeof gameCleanupFn === "function") { try { gameCleanupFn(); } catch (_) {} gameCleanupFn = null; } }  function switchView(viewName) { state.activeView = viewName; document.querySelectorAll(".view-section").forEach((sec) => { sec.classList.toggle("active", sec.id === `view-${viewName}`);
+        });
+        document.querySelectorAll(".nav-item[data-view]").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.view === viewName);
+        });
+        $("sidebar")?.classList.remove("mobile-open");
+
+        if (viewName === "sports") {
+          renderMatches();
+          renderSportsBets();
+        } else if (viewName === "wallet") {
+          renderTxHistory();
+        } else if (viewName === "support") {
+          renderTickets();
+          renderTicketThread();
+        } else if (viewName === "admin") {
+          renderAdminPanel();
+        }
+      }
+
+      function openAuthModal(mode = "login") {
+        const modal = $("authModal");
+        const loginForm = $("loginForm");
+        const regForm = $("registerForm");
+        const tLogin = $("tabLoginBtn");
+        const tReg = $("tabRegisterBtn");
+        if (!modal) return;
+        const isReg = mode === "register";
+        if (loginForm) loginForm.style.display = isReg ? "none" : "flex";
+        if (regForm) regForm.style.display = isReg ? "flex" : "none";
+        if (tLogin) tLogin.classList.toggle("active", !isReg);
+        if (tReg) tReg.classList.toggle("active", isReg);
+        modal.classList.add("open");
+      }
+
+      function closeModal(id) {
+        $(id)?.classList.remove("open");
+      }
+
+      function renderLobbyGames() {
+        const grid = $("gamesGrid");
+        if (!grid) return;
+        const filtered = GAMES.filter((g) => state.gameCategory === "all" || g.cat === state.gameCategory);
+        grid.innerHTML = filtered.map((g) => `
+          <div class="game-card">
+            <div class="game-card-top">
+              <div class="game-icon">${g.icon}</div>
+              <span class="game-edge">${g.edge}</span>
+            </div>
+            <div class="game-name">${g.name}</div>
+            <div class="game-desc">${g.desc}</div>
+            <button class="btn btn-primary btn-sm" data-open-game="${g.id}">شروع بازی</button>
+          </div>
+        `).join("");
+
+        grid.querySelectorAll("[data-open-game]").forEach((btn) => {
+          btn.addEventListener("click", () => openGameCabinet(btn.dataset.openGame));
+        });
+      }
+
+      function renderGameHistoryPills() {
+        const box = $("gameHistoryPills");
+        if (!box) return;
+        const items = state.gameHistory[state.activeGameId] || [];
+        if (!items.length) {
+          box.innerHTML = `<span style="font-size:0.76rem;color:var(--text-dim);">هنوز نتیجه‌ای در این بازی ثبت نشده است.</span>`;
+          return;
+        }
+        box.innerHTML = items.map((it) => `<span class="hist-pill mono ${it.isWin ? "win" : "loss"}">${it.label}</span>`).join("");
+      }
+
+      function setHud(cells = []) {
+        const strip = $("gameHudStrip");
+        if (!strip) return;
+        strip.innerHTML = cells.slice(0, 4).map((c) => `
+          <div class="hud-box">
+            <div class="hud-label">${c.label}</div>
+            <div class="hud-val mono" style="${c.color ? `color:${c.color}` : ""}">${c.value}</div>
+          </div>
+        `).join("");
+      }
+
+      // Autonomous Crash Loop
+      const crashEngine = {
+        phase: "RUNNING",
+        multiplier: 1.00,
+        crashPoint: 2.40,
+        countdown: 4.0,
+        hasBet: false,
+        cashedOut: false,
+        betAmount: 0,
+        autoCashout: 2.00,
+        rafId: null,
+        lastTs: 0,
+
+        pickCrashPoint() {
+          if (Math.random() < 0.04) return 1.00;
+          const val = 0.99 / (1 - Math.random());
+          return Math.min(50, Math.max(1.05, Number(val.toFixed(2))));
+        },
+
+        startLoop() {
+          this.stopLoop();
+          this.lastTs = performance.now();
+          const tick = (now) => {
+            const dt = Math.min(0.1, Math.max(0.001, (now - this.lastTs) / 1000));
+            this.lastTs = now;
+            this.step(dt);
+            if (state.activeGameId === "crash" && state.activeView === "game") {
+              this.renderStage();
+            }
+            this.rafId = requestAnimationFrame(tick);
+          };
+          this.rafId = requestAnimationFrame(tick);
+        },
+
+        stopLoop() {
+          if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+            this.rafId = null;
+          }
+        },
+
+        step(dt) {
+          if (this.phase === "RUNNING") {
+            const growth = 0.14 + (this.multiplier - 1) * 0.16;
+            this.multiplier = Number((this.multiplier + growth * dt).toFixed(2));
+            if (this.hasBet && !this.cashedOut && this.autoCashout > 1 && this.multiplier >= this.autoCashout) {
+              this.cashOut();
+            }
+            if (this.multiplier >= this.crashPoint) {
+              this.multiplier = this.crashPoint;
+              this.phase = "CRASHED";
+              recordGameOutcome("crash", `${this.multiplier.toFixed(2)}x`, this.cashedOut);
+              if (this.hasBet && !this.cashedOut) {
+                showToast(`انفجار در ${this.multiplier.toFixed(2)}x! شرط از دست رفت.`, "error"); } this.hasBet = false; this.countdown = 3.0; } } else if (this.phase === "CRASHED") { this.countdown -= dt; if (this.countdown <= 0) { this.phase = "WAITING"; this.countdown = 4.0; this.multiplier = 1.00; } } else if (this.phase === "WAITING") { this.countdown -= dt; if (this.countdown <= 0) { this.phase = "RUNNING"; this.multiplier = 1.00; this.crashPoint = this.pickCrashPoint(); this.cashedOut = false; } } },  placeBet(amount, autoOut) { if (this.hasBet) { showToast("شما در این راند شرط فعال دارید.", "warn"); return; } if (!canAffordStake(amount)) return; this.betAmount = debitStake(amount); this.autoCashout = Math.max(1.01, Number(autoOut) \vert{}\vert{} 2.0); this.hasBet = true; this.cashedOut = false; SofyanBackendGateway.request("/games/crash/bet", { amount: this.betAmount, autoCashout: this.autoCashout }); showToast(`شرط ${formatAmount(this.betAmount)} روی Crash ثبت شد.`);
+          this.renderControls();
+        },
+
+        cashOut() {
+          if (!this.hasBet || this.cashedOut || this.phase !== "RUNNING") return;
+          this.cashedOut = true;
+          this.hasBet = false;
+          const payout = this.betAmount * this.multiplier;
+          creditWin(payout);
+          SofyanBackendGateway.request("/games/crash/cashout", { multiplier: this.multiplier, payout });
+          showToast(`برداشت موفق در ${this.multiplier.toFixed(2)}x به مبلغ ${formatAmount(payout)}!`);
+          this.renderControls();
+        },
+
+        renderControls() {
+          const panel = $("gameControlsPanel");
+          if (!panel) return;
+          const canCash = this.hasBet && !this.cashedOut && this.phase === "RUNNING";
+          panel.innerHTML = `
+            <div class="field-group">
+              <label class="field-label" for="crashStake">مبلغ شرط</label>
+              <input id="crashStake" type="number" min="0.01" step="any" value="${this.betAmount \vert{}\vert{} 10}" class="mono" ${this.hasBet ? "disabled" : ""} />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="crashAuto">برداشت خودکار (ضریب)</label>
+              <input id="crashAuto" type="number" min="1.05" step="0.05" value="${this.autoCashout}" class="mono" ${this.hasBet ? "disabled" : ""} />
+            </div>
+            <button id="crashActionBtn" class="btn ${canCash ? "btn-gold" : "btn-primary"}">
+              ${canCash
+                ? `برداشت آنی (${formatAmount(this.betAmount * this.multiplier)})`
+                : this.hasBet
+                  ? "شرط ثبت شد"
+                  : "ثبت شرط راند خودکار"}
+            </button>
+          `;
+
+          $("crashActionBtn")?.addEventListener("click", () => {
+            if (canCash) this.cashOut();
+            else this.placeBet(Number($("crashStake")?.value || 0), Number($("crashAuto")?.value || 2));
+          });
+        },
+
+        renderStage() {
+          const stage = $("gameStageBox");
+          if (!stage) return;
+          const cls = this.phase === "RUNNING" ? "running" : this.phase === "CRASHED" ? "crashed" : "waiting";
+          const statusText = this.phase === "RUNNING"
+            ? "در حال صعود زنده..."
+            : this.phase === "CRASHED"
+              ? "منفجر شد!"
+              : `شروع راند بعدی تا ${Math.max(0, this.countdown).toFixed(1)}s`;
+          const pct = Math.min(100, Math.max(0, ((this.multiplier - 1) / 9) * 100));
+
+          setHud([
+            { label: "وضعیت راند", value: statusText },
+            { label: "ضریب فعلی", value: `${this.multiplier.toFixed(2)}x`, color: cls === "running" ? "var(--accent)" : cls === "crashed" ? "var(--danger)" : "var(--gold)" }, { label: "برداشت خودکار", value: `${this.autoCashout.toFixed(2)}x` },
+            { label: "شرط فعال", value: this.hasBet ? formatAmount(this.betAmount) : "ندارد" }
+          ]);
+
+          stage.innerHTML = `
+            <div style="font-size:0.84rem;color:var(--text-muted);font-weight:700;">${statusText}</div>
+            <div class="crash-readout mono ${cls}">${this.multiplier.toFixed(2)}x</div>
+            <div class="crash-track"><div class="crash-fill" style="width:${this.phase === "WAITING" ? 0 : pct}%;"></div></div>
+            <div style="font-size:0.76rem;color:var(--text-dim);">چرخه بازی به صورت پیوسته و خودکار در حال اجراست.</div>
+          `;
+        }
+      };
+
+      function buildStandardStakeBlock(defaultStake = 10) {
+        return `
+          <div class="field-group">
+            <label class="field-label" for="stdStakeInput">مبلغ شرط</label>
+            <input id="stdStakeInput" type="number" min="0.01" step="any" value="${defaultStake}" class="mono" />
+            <div class="quick-row" style="margin-top:4px;">
+              <button type="button" class="btn btn-ghost btn-sm" data-mult="0.5">½</button>
+              <button type="button" class="btn btn-ghost btn-sm" data-mult="2">2×</button>
+              <button type="button" class="btn btn-ghost btn-sm" data-mult="max">Max</button>
+              <button type="button" class="btn btn-ghost btn-sm" data-set="10">10</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function bindStandardStakeHelpers() {
+        const inp = $("stdStakeInput");
+        if (!inp) return;
+        document.querySelectorAll("[data-mult]").forEach((b) => {
+          b.addEventListener("click", () => {
+            const cur = Number(inp.value) || 0;
+            if (b.dataset.mult === "0.5") inp.value = Math.max(0.01, Number((cur * 0.5).toFixed(4)));
+            else if (b.dataset.mult === "2") inp.value = Number((cur * 2).toFixed(4));
+            else if (b.dataset.mult === "max") inp.value = Math.max(0.01, Number(getActiveBalance().toFixed(4)));
+          });
+        });
+        document.querySelectorAll("[data-set]").forEach((b) => {
+          b.addEventListener("click", () => { inp.value = b.dataset.set; });
+        });
+      }
+
+      function mountGame(gameId) {
+        runGameCleanup();
+        state.activeGameId = gameId;
+        const gObj = GAMES.find((x) => x.id === gameId) || GAMES[0];
+        if ($("cabinetGameIcon")) $("cabinetGameIcon").textContent = gObj.icon;
+        if ($("cabinetGameTitle")) $("cabinetGameTitle").textContent = gObj.name;
+        if ($("cabinetGameEdge")) $("cabinetGameEdge").textContent = gObj.edge;
+        if ($("sidebarActiveGame")) $("sidebarActiveGame").textContent = gObj.name.split(" ")[0];
+        if ($("quickGameSwitcher")) $("quickGameSwitcher").value = gObj.id;
+
+        renderGameHistoryPills();
+
+        if (gameId === "crash") {
+          crashEngine.renderControls();
+          crashEngine.renderStage();
+          return;
+        }
+
+        const panel = $("gameControlsPanel");
+        const stage = $("gameStageBox");
+        if (!panel || !stage) return;
+
+        if (gameId === "dice") {
+          panel.innerHTML = `
+            ${buildStandardStakeBlock(10)}
+            <div class="field-group">
+              <label class="field-label" for="diceTarget">عدد هدف (۵ تا ۹۵)</label>
+              <input id="diceTarget" type="number" min="5" max="95" value="50" class="mono" />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="diceDir">شرط روی</label>
+              <select id="diceDir">
+                <option value="under">کمتر از هدف</option>
+                <option value="over">بیشتر از هدف</option>
+              </select>
+            </div>
+            <button id="diceRollBtn" class="btn btn-primary">پرتاب تاس</button>
+          `;
+          bindStandardStakeHelpers();
+          setHud([{ label: "نتیجه تاس", value: "—" }, { label: "احتمال برد", value: "49.0%" }, { label: "ضریب برد", value: "2.02x" }, { label: "آخرین سود", value: "0.00" }]);
+          stage.innerHTML = `<div style="font-size:2.6rem;font-weight:900;" id="diceBigNum" class="mono">50.00</div><div style="color:var(--text-muted);font-size:0.84rem;">عدد هدف را تنظیم کنید و تاس بیندازید.</div>`;
+          $("diceRollBtn")?.addEventListener("click", () => {
+            const stake = Number($("stdStakeInput")?.value || 0);
+            const target = Math.min(95, Math.max(5, Number($("diceTarget")?.value || 50)));
+            const dir = $("diceDir")?.value || "under";
+            if (!canAffordStake(stake)) return;
+            const bet = debitStake(stake);
+            const winChance = dir === "under" ? target : (99.99 - target);
+            const mult = Number((99 / Math.max(1, winChance)).toFixed(2));
+            const roll = Number((Math.random() * 100).toFixed(2));
+            const won = dir === "under" ? roll < target : roll > target;
+            const payout = won ? bet * mult : 0;
+            if (won) creditWin(payout);
+            recordGameOutcome("dice", `${roll.toFixed(2)}`, won); if ($("diceBigNum")) { $("diceBigNum").textContent = roll.toFixed(2); $("diceBigNum").style.color = won ? "var(--accent)" : "var(--danger)"; } setHud([ { label: "نتیجه تاس", value: roll.toFixed(2), color: won ? "var(--accent)" : "var(--danger)" }, { label: "احتمال برد", value: `${winChance.toFixed(1)}%` },
+              { label: "ضریب برد", value: `${mult}x` }, { label: "برد / باخت", value: won ? `+${formatAmount(payout)}` : `-${formatAmount(bet)}` } ]); showToast(won ? `برد در Dice: ${formatAmount(payout)}` : `تاس ${roll} آمد و شرط باخته شد.`, won ? "info" : "error"); }); return; }  if (gameId === "mines") { let active = false, stakeAmt = 0, minesCount = 5, bombSet = new Set(), revealed = new Set(); const currentMult = () => Number((Math.pow(25 / Math.max(1, 25 - minesCount), revealed.size * 0.78) * 0.99).toFixed(2));  const renderMinesBoard = () => { const mult = currentMult(); setHud([ { label: "وضعیت", value: active ? "در حال بازی" : "آماده" }, { label: "تعداد مین", value: String(minesCount), color: "var(--danger)" }, { label: "ضریب فعلی", value: `${mult}x`, color: "var(--accent)" },
+              { label: "برد احتمالی", value: active ? formatAmount(stakeAmt * mult) : "—" }
+            ]);
+            stage.innerHTML = `
+              <div class="mines-grid">
+                ${Array.from({ length: 25 }, (_, idx) => {
+                  let cls = "mine-cell", txt = "";
+                  if (revealed.has(idx)) {
+                    if (bombSet.has(idx)) { cls += " boom"; txt = "💣"; }
+                    else { cls += " safe"; txt = "💎"; }
+                  } else if (!active && bombSet.size && bombSet.has(idx)) txt = "💣";
+                  return `<button type="button" class="${cls}" data-mine-idx="${idx}">${txt}</button>`;
+                }).join("")}
+              </div>
+            `;
+            stage.querySelectorAll("[data-mine-idx]").forEach((btn) => {
+              btn.addEventListener("click", () => {
+                if (!active) return;
+                const idx = Number(btn.dataset.mineIdx);
+                if (revealed.has(idx)) return;
+                revealed.add(idx);
+                if (bombSet.has(idx)) {
+                  active = false;
+                  Array.from({ length: 25 }, (_, k) => revealed.add(k));
+                  recordGameOutcome("mines", "💣", false);
+                  showToast("به مین برخورد کردید!", "error");
+                } else {
+                  showToast(`الماس پیدا شد! ضریب: ${currentMult()}x`);
+                }
+                renderMinesControls();
+                renderMinesBoard();
+              });
+            });
+          };
+
+          const renderMinesControls = () => {
+            const mult = currentMult();
+            panel.innerHTML = `
+              ${buildStandardStakeBlock(10)}
+              <div class="field-group">
+                <label class="field-label" for="minesCountSel">تعداد مین‌ها</label>
+                <select id="minesCountSel" ${active ? "disabled" : ""}>
+                  ${[1, 3, 5, 8, 12, 16].map((n) => `<option value="${n}" ${n === minesCount ? "selected" : ""}>${n} مین</option>`).join("")}
+                </select>
+              </div>
